@@ -11,6 +11,13 @@ import About from "./pages/About";
 import Pricing from "./pages/Pricing";
 import Locations from "./pages/Locations";
 import Auth from "./pages/Auth";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminClasses from "./pages/admin/AdminClasses";
+import AdminBookings from "./pages/admin/AdminBookings";
+import AdminAttendance from "./pages/admin/AdminAttendance";
+import AdminRevenue from "./pages/admin/AdminRevenue";
+import AdminLocations from "./pages/admin/AdminLocations";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +37,17 @@ const App = () => (
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/locations" element={<Locations />} />
             <Route path="/auth" element={<Auth />} />
+            
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="classes" element={<AdminClasses />} />
+              <Route path="bookings" element={<AdminBookings />} />
+              <Route path="attendance" element={<AdminAttendance />} />
+              <Route path="revenue" element={<AdminRevenue />} />
+              <Route path="locations" element={<AdminLocations />} />
+            </Route>
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
