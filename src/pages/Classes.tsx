@@ -1,112 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { ClassCard, ClassData } from "@/components/ui/ClassCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, MapPin, Calendar, Baby } from "lucide-react";
+import { Search, Filter, MapPin, Calendar, Baby, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { supabase } from "@/integrations/supabase/client";
 import babyClassImage from "@/assets/baby-class.jpg";
 import toddlerClassImage from "@/assets/toddler-class.jpg";
 import preschoolClassImage from "@/assets/preschool-class.jpg";
 
-// Sample class data
-const sampleClasses: ClassData[] = [
-  {
-    id: "1",
-    title: "Baby & Me Music",
-    ageRange: "0-12 months",
-    description: "Gentle rhythms and lullabies to bond with your baby through the power of music.",
-    image: babyClassImage,
-    schedule: "Mondays",
-    time: "10:00 AM - 10:45 AM",
-    location: "Mission District Studio",
-    spotsLeft: 3,
-    totalSpots: 12,
-    price: 35,
-    featured: true,
-  },
-  {
-    id: "2",
-    title: "Toddler Tunes",
-    ageRange: "1-2 years",
-    description: "Energetic songs, movement, and simple instruments for curious toddlers.",
-    image: toddlerClassImage,
-    schedule: "Tuesdays & Thursdays",
-    time: "9:30 AM - 10:15 AM",
-    location: "Pacific Heights Center",
-    spotsLeft: 5,
-    totalSpots: 10,
-    price: 35,
-  },
-  {
-    id: "3",
-    title: "Little Movers",
-    ageRange: "2-3 years",
-    description: "Dance, sing, and explore rhythm with high-energy activities for active toddlers.",
-    image: toddlerClassImage,
-    schedule: "Wednesdays",
-    time: "11:00 AM - 11:45 AM",
-    location: "Noe Valley Studio",
-    spotsLeft: 8,
-    totalSpots: 12,
-    price: 35,
-  },
-  {
-    id: "4",
-    title: "Preschool Beats",
-    ageRange: "3-4 years",
-    description: "Collaborative music-making with instruments, singing, and creative expression.",
-    image: preschoolClassImage,
-    schedule: "Fridays",
-    time: "3:30 PM - 4:15 PM",
-    location: "Mission District Studio",
-    spotsLeft: 0,
-    totalSpots: 10,
-    price: 40,
-    featured: true,
-  },
-  {
-    id: "5",
-    title: "Music Explorers",
-    ageRange: "4-5 years",
-    description: "Advanced music concepts through play, storytelling, and instrument exploration.",
-    image: preschoolClassImage,
-    schedule: "Saturdays",
-    time: "10:00 AM - 10:45 AM",
-    location: "Pacific Heights Center",
-    spotsLeft: 6,
-    totalSpots: 10,
-    price: 40,
-  },
-  {
-    id: "6",
-    title: "Spanish Music Class",
-    ageRange: "0-5 years",
-    description: "Bilingual music class featuring traditional Spanish songs and rhythms.",
-    image: babyClassImage,
-    schedule: "Saturdays",
-    time: "11:30 AM - 12:15 PM",
-    location: "Mission District Studio",
-    spotsLeft: 4,
-    totalSpots: 12,
-    price: 40,
-  },
-];
-
 const ageFilters = [
   { value: "all", label: "All Ages" },
-  { value: "0-1", label: "0-12 months" },
-  { value: "1-3", label: "1-3 years" },
-  { value: "3-5", label: "3-5 years" },
-];
-
-const locationFilters = [
-  { value: "all", label: "All Locations" },
-  { value: "mission", label: "Mission District" },
-  { value: "pacific-heights", label: "Pacific Heights" },
-  { value: "noe-valley", label: "Noe Valley" },
+  { value: "0-12 months", label: "0-12 months" },
+  { value: "1-2 years", label: "1-2 years" },
+  { value: "2-3 years", label: "2-3 years" },
+  { value: "3-4 years", label: "3-4 years" },
+  { value: "4-5 years", label: "4-5 years" },
 ];
 
 const dayFilters = [
@@ -115,17 +27,114 @@ const dayFilters = [
   { value: "weekend", label: "Weekends" },
 ];
 
+// Map age groups to images
+const getImageForAgeGroup = (ageGroup: string): string => {
+  if (ageGroup.includes("0-12") || ageGroup.includes("0-5")) return babyClassImage;
+  if (ageGroup.includes("1-2") || ageGroup.includes("2-3")) return toddlerClassImage;
+  return preschoolClassImage;
+};
+
 export default function ClassesPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [ageFilter, setAgeFilter] = useState("all");
   const [locationFilter, setLocationFilter] = useState("all");
   const [dayFilter, setDayFilter] = useState("all");
+  const [classes, setClasses] = useState<ClassData[]>([]);
+  const [locations, setLocations] = useState<{ id: string; name: string }[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Simple filtering logic (would be more sophisticated with real data)
-  const filteredClasses = sampleClasses.filter((classItem) => {
-    const matchesSearch = classItem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  useEffect(() => {
+    fetchClasses();
+    fetchLocations();
+  }, []);
+
+  const fetchLocations = async () => {
+    const { data } = await supabase
+      .from("locations")
+      .select("id, name")
+      .eq("is_active", true);
+    
+    if (data) {
+      setLocations(data);
+    }
+  };
+
+  const fetchClasses = async () => {
+    setIsLoading(true);
+    const { data, error } = await supabase
+      .from("classes")
+      .select(`
+        id,
+        title,
+        description,
+        age_group,
+        schedule,
+        start_time,
+        end_time,
+        day_of_week,
+        price,
+        capacity,
+        is_featured,
+        image_url,
+        locations (
+          id,
+          name
+        )
+      `)
+      .eq("is_active", true);
+
+    if (error) {
+      console.error("Error fetching classes:", error);
+      setIsLoading(false);
+      return;
+    }
+
+    if (data) {
+      const formattedClasses: ClassData[] = data.map((cls) => ({
+        id: cls.id,
+        title: cls.title,
+        ageRange: cls.age_group,
+        description: cls.description || "",
+        image: cls.image_url || getImageForAgeGroup(cls.age_group),
+        schedule: cls.schedule,
+        time: `${formatTime(cls.start_time)} - ${formatTime(cls.end_time)}`,
+        location: cls.locations?.name || "TBD",
+        spotsLeft: Math.floor(Math.random() * cls.capacity), // TODO: Calculate from bookings
+        totalSpots: cls.capacity,
+        price: Number(cls.price),
+        featured: cls.is_featured,
+      }));
+      setClasses(formattedClasses);
+    }
+    setIsLoading(false);
+  };
+
+  const formatTime = (time: string): string => {
+    const [hours, minutes] = time.split(":");
+    const hour = parseInt(hours);
+    const ampm = hour >= 12 ? "PM" : "AM";
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${minutes} ${ampm}`;
+  };
+
+  // Filter classes
+  const filteredClasses = classes.filter((classItem) => {
+    const matchesSearch = 
+      classItem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       classItem.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesSearch;
+    
+    const matchesAge = ageFilter === "all" || classItem.ageRange === ageFilter;
+    
+    const matchesLocation = locationFilter === "all" || 
+      classItem.location.toLowerCase().includes(
+        locations.find(l => l.id === locationFilter)?.name.toLowerCase() || ""
+      );
+
+    const matchesDay = dayFilter === "all" || 
+      (dayFilter === "weekend" && ["Saturday", "Sunday"].some(d => classItem.schedule.includes(d))) ||
+      (dayFilter === "weekday" && !["Saturday", "Sunday"].some(d => classItem.schedule.includes(d)));
+
+    return matchesSearch && matchesAge && matchesLocation && matchesDay;
   });
 
   return (
@@ -174,14 +183,15 @@ export default function ClassesPage() {
               </Select>
 
               <Select value={locationFilter} onValueChange={setLocationFilter}>
-                <SelectTrigger className="w-[160px]">
+                <SelectTrigger className="w-[180px]">
                   <MapPin className="h-4 w-4 mr-2 text-primary" />
                   <SelectValue placeholder="Location" />
                 </SelectTrigger>
                 <SelectContent>
-                  {locationFilters.map((filter) => (
-                    <SelectItem key={filter.value} value={filter.value}>
-                      {filter.label}
+                  <SelectItem value="all">All Locations</SelectItem>
+                  {locations.map((location) => (
+                    <SelectItem key={location.id} value={location.id}>
+                      {location.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -222,7 +232,7 @@ export default function ClassesPage() {
               )}
               {locationFilter !== "all" && (
                 <Badge variant="secondary" className="gap-1">
-                  {locationFilters.find(f => f.value === locationFilter)?.label}
+                  {locations.find(l => l.id === locationFilter)?.name}
                   <button onClick={() => setLocationFilter("all")} className="ml-1 hover:text-primary">×</button>
                 </Badge>
               )}
@@ -250,38 +260,46 @@ export default function ClassesPage() {
       {/* Classes Grid */}
       <section className="py-12 lg:py-16">
         <div className="container-page">
-          <div className="flex items-center justify-between mb-8">
-            <p className="text-muted-foreground">
-              Showing <strong className="text-foreground">{filteredClasses.length}</strong> classes
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredClasses.map((classItem, index) => (
-              <div
-                key={classItem.id}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <ClassCard classData={classItem} />
-              </div>
-            ))}
-          </div>
-
-          {filteredClasses.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-lg text-muted-foreground mb-4">
-                No classes found matching your criteria.
-              </p>
-              <Button onClick={() => {
-                setSearchQuery("");
-                setAgeFilter("all");
-                setLocationFilter("all");
-                setDayFilter("all");
-              }}>
-                Clear Filters
-              </Button>
+          {isLoading ? (
+            <div className="flex items-center justify-center py-16">
+              <Loader2 className="h-8 w-8 animate-spin text-primary" />
             </div>
+          ) : (
+            <>
+              <div className="flex items-center justify-between mb-8">
+                <p className="text-muted-foreground">
+                  Showing <strong className="text-foreground">{filteredClasses.length}</strong> classes
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {filteredClasses.map((classItem, index) => (
+                  <div
+                    key={classItem.id}
+                    className="animate-fade-in-up"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    <ClassCard classData={classItem} />
+                  </div>
+                ))}
+              </div>
+
+              {filteredClasses.length === 0 && (
+                <div className="text-center py-16">
+                  <p className="text-lg text-muted-foreground mb-4">
+                    No classes found matching your criteria.
+                  </p>
+                  <Button onClick={() => {
+                    setSearchQuery("");
+                    setAgeFilter("all");
+                    setLocationFilter("all");
+                    setDayFilter("all");
+                  }}>
+                    Clear Filters
+                  </Button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
