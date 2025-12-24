@@ -1,0 +1,158 @@
+import { Link } from "react-router-dom";
+import { Music, Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+
+const footerLinks = {
+  classes: [
+    { name: "Baby Classes (0-1)", href: "/classes?age=0-1" },
+    { name: "Toddler Classes (1-3)", href: "/classes?age=1-3" },
+    { name: "Preschool Classes (3-5)", href: "/classes?age=3-5" },
+    { name: "Private Groups", href: "/private-groups" },
+  ],
+  company: [
+    { name: "About Us", href: "/about" },
+    { name: "Locations", href: "/locations" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Contact", href: "/contact" },
+  ],
+  support: [
+    { name: "FAQs", href: "/faqs" },
+    { name: "Cancellation Policy", href: "/policies" },
+    { name: "Accessibility", href: "/accessibility" },
+  ],
+};
+
+export function Footer() {
+  return (
+    <footer className="bg-foreground text-background/90">
+      {/* Main Footer */}
+      <div className="container-page py-12 lg:py-16">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {/* Brand Column */}
+          <div className="space-y-4">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <Music className="h-5 w-5" />
+              </div>
+              <span className="font-display text-xl font-bold text-background">
+                Malinky<span className="text-primary">Music</span>
+              </span>
+            </Link>
+            <p className="text-sm text-background/70 leading-relaxed">
+              Joyful music classes where you and your child bond, grow, and play together. 
+              Serving families across San Francisco Bay Area.
+            </p>
+            <div className="flex gap-4">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full p-2 bg-background/10 hover:bg-primary hover:text-primary-foreground transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full p-2 bg-background/10 hover:bg-primary hover:text-primary-foreground transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full p-2 bg-background/10 hover:bg-primary hover:text-primary-foreground transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+
+          {/* Classes Links */}
+          <div>
+            <h3 className="font-display text-lg font-semibold text-background mb-4">Classes</h3>
+            <ul className="space-y-3">
+              {footerLinks.classes.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-sm text-background/70 hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h3 className="font-display text-lg font-semibold text-background mb-4">Company</h3>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-sm text-background/70 hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="font-display text-lg font-semibold text-background mb-4">Contact Us</h3>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-3 text-sm text-background/70">
+                <MapPin className="h-4 w-4 text-primary shrink-0" />
+                <span>San Francisco, CA</span>
+              </li>
+              <li>
+                <a
+                  href="mailto:hello@malinkymusic.com"
+                  className="flex items-center gap-3 text-sm text-background/70 hover:text-primary transition-colors"
+                >
+                  <Mail className="h-4 w-4 text-primary shrink-0" />
+                  <span>hello@malinkymusic.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+14155551234"
+                  className="flex items-center gap-3 text-sm text-background/70 hover:text-primary transition-colors"
+                >
+                  <Phone className="h-4 w-4 text-primary shrink-0" />
+                  <span>(415) 555-1234</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-background/10">
+        <div className="container-page py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-background/60">
+            © {new Date().getFullYear()} Malinky Music. All rights reserved.
+          </p>
+          <div className="flex gap-6">
+            <Link to="/privacy" className="text-sm text-background/60 hover:text-primary transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-sm text-background/60 hover:text-primary transition-colors">
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
