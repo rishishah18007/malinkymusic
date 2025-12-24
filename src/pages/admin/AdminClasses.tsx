@@ -278,7 +278,7 @@ export default function AdminClasses() {
                   <Label htmlFor="age_group">Age Group</Label>
                   <Select
                     value={formData.age_group}
-                    onValueChange={(value) => setFormData({ ...formData, age_group: value })}
+                    onValueChange={(value) => setFormData({ ...formData, age_group: value as "0-12 months" | "1-2 years" | "2-3 years" | "3-4 years" | "4-5 years" | "0-5 years" })}
                   >
                     <SelectTrigger>
                       <SelectValue />

@@ -280,7 +280,7 @@ export default function AdminBookings() {
                     <TableCell>
                       <Select
                         value={booking.status}
-                        onValueChange={(value) => updateBookingStatus(booking.id, value)}
+                        onValueChange={(value) => updateBookingStatus(booking.id, value as "confirmed" | "cancelled" | "waitlisted" | "completed")}
                       >
                         <SelectTrigger className="w-[130px]">
                           <Badge className={getStatusColor(booking.status)}>
