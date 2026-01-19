@@ -1,4 +1,14 @@
 import { Star, Quote } from "lucide-react";
+import { useEffect, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 const testimonials = [
   {
@@ -24,6 +34,18 @@ const testimonials = [
 ];
 
 export function TestimonialsSection() {
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
   return (
     <section className="py-16 lg:py-24 bg-background">
       <div className="container-page">
@@ -37,44 +59,78 @@ export function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid gap-6 md:grid-cols-3 lg:gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.name}
-              className="relative bg-card rounded-2xl p-6 lg:p-8 shadow-card hover:shadow-hover transition-all duration-300 hover:-translate-y-1 animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Quote Icon */}
-              <div className="absolute -top-4 right-6">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-soft">
-                  <Quote className="h-5 w-5" />
-                </div>
-              </div>
+        {/* Testimonials Carousel */}
+        <div className="max-w-4xl mx-auto px-12">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "center",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 5000,
+                stopOnInteraction: true,
+                stopOnMouseEnter: true,
+              }),
+            ]}
+            className="w-full"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={testimonial.name} className="md:basis-full">
+                  <div
+                    className="relative bg-card rounded-2xl p-8 lg:p-10 shadow-card animate-fade-in"
+                  >
+                    {/* Quote Icon */}
+                    <div className="absolute -top-4 left-8">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-soft">
+                        <Quote className="h-5 w-5" />
+                      </div>
+                    </div>
 
-              {/* Rating */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-accent text-accent" />
-                ))}
-              </div>
+                    {/* Rating */}
+                    <div className="flex gap-1 mb-6 justify-center">
+                      {Array.from({ length: testimonial.rating }).map((_, i) => (
+                        <Star key={i} className="h-5 w-5 fill-accent text-accent" />
+                      ))}
+                    </div>
 
-              {/* Content */}
-              <p className="text-foreground leading-relaxed mb-6">
-                "{testimonial.content}"
-              </p>
+                    {/* Content */}
+                    <p className="text-foreground text-lg leading-relaxed text-center mb-8 italic">
+                      "{testimonial.content}"
+                    </p>
 
-              {/* Author */}
-              <div className="flex items-center gap-4 pt-4 border-t border-border">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold text-lg">
-                  {testimonial.name.charAt(0)}
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground">— {testimonial.name}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+                    {/* Author */}
+                    <div className="flex items-center justify-center gap-4 pt-6 border-t border-border">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold text-lg">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <p className="font-semibold text-foreground text-lg">— {testimonial.name}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+          </Carousel>
+
+          {/* Dots indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  current === index
+                    ? "w-6 bg-primary"
+                    : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+                onClick={() => api?.scrollTo(index)}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
