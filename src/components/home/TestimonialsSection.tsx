@@ -2,28 +2,24 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah M.",
-    role: "Mom of Emma (18 months)",
-    location: "Mission District",
-    content: "Malinky Music has become the highlight of our week! Emma lights up the moment we walk in. The teachers are so warm and patient.",
+    name: "Nelli",
+    content: "We have really enjoyed Malinky music class! My baby really loves dancing to the music. The teacher is an excellent singer and keeps the babies really engaged... Highly recommend to any parent looking for a great baby music class!",
     rating: 5,
-    avatar: "https://i.pravatar.cc/100?img=1",
   },
   {
-    name: "David & Lisa K.",
-    role: "Parents of twins (3 years)",
-    location: "Pacific Heights",
-    content: "Both our kids have completely different personalities, but they both LOVE these classes. It's amazing to watch them learn and grow together.",
+    name: "Kendall",
+    content: "Malinky music is so wonderful! The songs are engaging and so fun... My son loves all the props and instruments she brings. Emilia is gentle, welcoming, kind, energetic, and FUN! Cannot recommend her classes more!",
     rating: 5,
-    avatar: "https://i.pravatar.cc/100?img=12",
   },
   {
-    name: "Jennifer T.",
-    role: "Mom of Oliver (8 months)",
-    location: "Noe Valley",
-    content: "As a first-time mom, I was nervous about group classes. But the welcoming atmosphere made us feel right at home from day one!",
+    name: "Ashley",
+    content: "Emilia is fantastic! She is so warm and wonderful to be around... We look forward to our weekly sessions with her and would recommend anyone looking for a fun class and sense of community to come join!",
     rating: 5,
-    avatar: "https://i.pravatar.cc/100?img=5",
+  },
+  {
+    name: "Kyla",
+    content: "Emilia is wonderful! My daughter has attended her music classes since she was around 9 months old. At that time she would listen to the songs and explore the instruments handed to her. Now, she is almost 15 months and has started dancing to the music... There is something for all ages and all developmental stages!",
+    rating: 5,
   },
 ];
 
@@ -70,15 +66,11 @@ export function TestimonialsSection() {
 
               {/* Author */}
               <div className="flex items-center gap-4 pt-4 border-t border-border">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  className="h-12 w-12 rounded-full object-cover"
-                />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary font-semibold text-lg">
+                  {testimonial.name.charAt(0)}
+                </div>
                 <div>
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                  <p className="text-xs text-muted-foreground">{testimonial.location}</p>
+                  <p className="font-semibold text-foreground">— {testimonial.name}</p>
                 </div>
               </div>
             </div>
