@@ -43,6 +43,9 @@ export function Header() {
             alt="Malinky Music" 
             className="h-12 w-auto lg:h-14 transition-transform group-hover:scale-105"
           />
+          <span className="font-display text-xl font-bold text-foreground lg:text-2xl">
+            Malinky<span className="text-primary">Music</span>
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
