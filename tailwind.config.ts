@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["'Baloo 2'", "cursive"],
+        display: ["'Shortcake'", "'Baloo 2'", "cursive"],
         body: ["Nunito", "sans-serif"],
       },
       colors: {
