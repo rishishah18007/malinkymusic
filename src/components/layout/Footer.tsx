@@ -10,8 +10,7 @@ const footerLinks = {
   ],
   company: [
     { name: "About Us", href: "/about" },
-    { name: "Locations", href: "/locations" },
-    { name: "Pricing", href: "/pricing" },
+    { name: "Library Programs", href: "/library-programs" },
     { name: "Contact", href: "/contact" },
   ],
   support: [

@@ -8,8 +8,7 @@ import Index from "./pages/Index";
 import Classes from "./pages/Classes";
 import ClassFinder from "./pages/ClassFinder";
 import About from "./pages/About";
-import Pricing from "./pages/Pricing";
-import Locations from "./pages/Locations";
+import LibraryPrograms from "./pages/LibraryPrograms";
 import Auth from "./pages/Auth";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -34,8 +33,7 @@ const App = () => (
             <Route path="/classes" element={<Classes />} />
             <Route path="/class-finder" element={<ClassFinder />} />
             <Route path="/about" element={<About />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/locations" element={<Locations />} />
+            <Route path="/library-programs" element={<LibraryPrograms />} />
             <Route path="/auth" element={<Auth />} />
             
             {/* Admin Routes */}
