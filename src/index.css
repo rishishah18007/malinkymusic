@@ -5,6 +5,15 @@
 /* Malinky Music Design System - Warm, joyful, playful children's music education brand */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Baloo+2:wght@400;500;600;700;800&display=swap');
 
+/* Custom Shortcake font for headers */
+@font-face {
+  font-family: 'Shortcake';
+  src: url('@/assets/fonts/Shortcake.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     /* Malinky Brand Colors - Warm, Playful, Joyful */
