@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, Music, User, LogOut } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useLocation } from "react-router-dom";
+import malinkyLogo from "@/assets/malinky-logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -37,12 +38,11 @@ export function Header() {
       <nav className="container-page flex h-16 items-center justify-between lg:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground transition-transform group-hover:scale-110">
-            <Music className="h-5 w-5" />
-          </div>
-          <span className="font-display text-xl font-bold text-foreground lg:text-2xl">
-            Malinky<span className="text-primary">Music</span>
-          </span>
+          <img 
+            src={malinkyLogo} 
+            alt="Malinky Music" 
+            className="h-12 w-auto lg:h-14 transition-transform group-hover:scale-105"
+          />
         </Link>
 
         {/* Desktop Navigation */}
