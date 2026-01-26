@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Music, Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import malinkyLogo from "@/assets/malinky-logo.png";
 
 const footerLinks = {
   classes: [
@@ -29,9 +30,11 @@ export function Footer() {
           {/* Brand Column */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Music className="h-5 w-5" />
-              </div>
+              <img 
+                src={malinkyLogo} 
+                alt="Malinky Music" 
+                className="h-12 w-auto"
+              />
               <span className="font-display text-xl font-bold text-background">
                 Malinky<span className="text-primary">Music</span>
               </span>
