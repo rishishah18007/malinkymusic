@@ -9,6 +9,7 @@ import Classes from "./pages/Classes";
 import ClassFinder from "./pages/ClassFinder";
 import About from "./pages/About";
 import LibraryPrograms from "./pages/LibraryPrograms";
+import PrivateLessons from "./pages/PrivateLessons";
 import Auth from "./pages/Auth";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -18,7 +19,6 @@ import AdminAttendance from "./pages/admin/AdminAttendance";
 import AdminRevenue from "./pages/admin/AdminRevenue";
 import AdminLocations from "./pages/admin/AdminLocations";
 import NotFound from "./pages/NotFound";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -34,6 +34,7 @@ const App = () => (
             <Route path="/class-finder" element={<ClassFinder />} />
             <Route path="/about" element={<About />} />
             <Route path="/library-programs" element={<LibraryPrograms />} />
+            <Route path="/private-lessons" element={<PrivateLessons />} />
             <Route path="/auth" element={<Auth />} />
             
             {/* Admin Routes */}
