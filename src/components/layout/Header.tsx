@@ -18,6 +18,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "Classes", href: "/classes" },
   { name: "Find a Class", href: "/class-finder" },
+  { name: "Private Lessons", href: "/private-lessons" },
   { name: "Library Programs", href: "/library-programs" },
   { name: "About", href: "/about" },
 ];
