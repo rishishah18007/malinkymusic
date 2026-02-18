@@ -27,11 +27,10 @@ const dayFilters = [
   { value: "weekend", label: "Weekends" },
 ];
 
-// Map age groups to images
-const getImageForAgeGroup = (ageGroup: string): string => {
-  if (ageGroup.includes("0-12") || ageGroup.includes("0-5")) return babyClassImage;
-  if (ageGroup.includes("1-2") || ageGroup.includes("2-3")) return toddlerClassImage;
-  return preschoolClassImage;
+// Alternate images for classes
+const classImages = [toddlerClassImage, preschoolClassImage, babyClassImage];
+const getImageForIndex = (index: number): string => {
+  return classImages[index % classImages.length];
 };
 
 export default function ClassesPage() {
@@ -91,12 +90,12 @@ export default function ClassesPage() {
     }
 
     if (data) {
-      const formattedClasses: ClassData[] = data.map((cls) => ({
+      const formattedClasses: ClassData[] = data.map((cls, index) => ({
         id: cls.id,
         title: cls.title,
         ageRange: cls.age_group,
         description: cls.description || "",
-        image: cls.image_url || getImageForAgeGroup(cls.age_group),
+        image: cls.image_url || getImageForIndex(index),
         schedule: cls.schedule,
         time: `${formatTime(cls.start_time)} - ${formatTime(cls.end_time)}`,
         location: cls.locations?.name || "TBD",
