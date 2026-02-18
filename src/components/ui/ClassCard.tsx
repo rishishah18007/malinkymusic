@@ -96,9 +96,9 @@ export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
             <Users className={cn("h-4 w-4", isAlmostFull ? "text-destructive" : "text-tertiary")} />
             <span className={cn(
               "text-sm font-medium",
-              isFull ? "text-destructive" : isAlmostFull ? "text-destructive" : "text-muted-foreground"
+              isFull ? "text-destructive" : "text-muted-foreground"
             )}>
-              {isFull ? "Class Full" : `${classData.spotsLeft} spots left`}
+              {isFull ? "Class Full" : "A few spots left"}
             </span>
           </div>
           <span className="text-lg font-bold text-foreground">
