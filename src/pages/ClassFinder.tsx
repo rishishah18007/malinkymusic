@@ -25,7 +25,7 @@ const questions: Question[] = [
     icon: MapPin,
     options: [
       { value: "inner-sunset", label: "Inner Sunset", description: "Near Outer Village" },
-      { value: "western-addition", label: "Western Addition / NoPa", description: "Near Canvas Church" },
+      { value: "presidio", label: "Presidio", description: "Near Canvas Church" },
       { value: "any", label: "I'm flexible", description: "Show all locations" },
     ],
   },
