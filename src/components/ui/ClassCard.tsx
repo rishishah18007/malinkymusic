@@ -17,6 +17,7 @@ export interface ClassData {
   totalSpots: number;
   price: number;
   featured?: boolean;
+  registrationUrl?: string | null;
 }
 
 interface ClassCardProps {
@@ -106,15 +107,27 @@ export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
         </div>
 
         {/* CTA */}
-        <Link to={`/classes/${classData.id}`}>
-          <Button 
-            className="w-full mt-2" 
-            disabled={isFull}
-            variant={isFull ? "outline" : "default"}
-          >
-            {isFull ? "Join Waitlist" : "Book This Class"}
-          </Button>
-        </Link>
+        {classData.registrationUrl ? (
+          <a href={classData.registrationUrl} target="_blank" rel="noopener noreferrer">
+            <Button 
+              className="w-full mt-2" 
+              disabled={isFull}
+              variant={isFull ? "outline" : "default"}
+            >
+              {isFull ? "Join Waitlist" : "Book This Class"}
+            </Button>
+          </a>
+        ) : (
+          <Link to={`/classes/${classData.id}`}>
+            <Button 
+              className="w-full mt-2" 
+              disabled={isFull}
+              variant={isFull ? "outline" : "default"}
+            >
+              {isFull ? "Join Waitlist" : "Book This Class"}
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );

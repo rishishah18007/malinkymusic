@@ -76,6 +76,7 @@ export default function ClassesPage() {
         capacity,
         is_featured,
         image_url,
+        registration_url,
         locations (
           id,
           name
@@ -103,6 +104,7 @@ export default function ClassesPage() {
         totalSpots: cls.capacity,
         price: Number(cls.price),
         featured: cls.is_featured,
+        registrationUrl: (cls as any).registration_url,
       }));
       setClasses(formattedClasses);
     }

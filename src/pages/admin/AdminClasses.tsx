@@ -95,6 +95,7 @@ export default function AdminClasses() {
     is_featured: false,
     is_active: true,
     location_id: "",
+    registration_url: "",
   });
 
   useEffect(() => {
@@ -143,6 +144,7 @@ export default function AdminClasses() {
       is_featured: false,
       is_active: true,
       location_id: "",
+      registration_url: "",
     });
     setEditingClass(null);
   };
@@ -167,6 +169,7 @@ export default function AdminClasses() {
       is_featured: classItem.is_featured,
       is_active: classItem.is_active,
       location_id: classItem.location_id || "",
+      registration_url: (classItem as any).registration_url || "",
     });
     setIsDialogOpen(true);
   };
@@ -178,6 +181,7 @@ export default function AdminClasses() {
     const classData = {
       ...formData,
       location_id: formData.location_id || null,
+      registration_url: formData.registration_url || null,
     };
 
     if (editingClass) {
@@ -394,6 +398,17 @@ export default function AdminClasses() {
                     required
                   />
                 </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="registration_url">Registration URL (MainStreet Sites)</Label>
+                <Input
+                  id="registration_url"
+                  type="url"
+                  value={formData.registration_url}
+                  onChange={(e) => setFormData({ ...formData, registration_url: e.target.value })}
+                  placeholder="https://app.mainstreetsites.com/..."
+                />
               </div>
 
               <div className="flex items-center gap-6">
