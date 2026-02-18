@@ -19,26 +19,13 @@ interface Question {
 
 const questions: Question[] = [
   {
-    id: "age",
-    title: "How old is your child?",
-    subtitle: "We'll find classes perfectly suited to their developmental stage.",
-    icon: Baby,
-    options: [
-      { value: "0-12", label: "0-12 months", description: "Newborns & crawlers" },
-      { value: "1-2", label: "1-2 years", description: "New walkers & talkers" },
-      { value: "2-3", label: "2-3 years", description: "Active toddlers" },
-      { value: "3-5", label: "3-5 years", description: "Preschoolers" },
-    ],
-  },
-  {
     id: "location",
     title: "Where are you located?",
-    subtitle: "We'll show you classes closest to your neighborhood.",
+    subtitle: "We'll show you the class closest to your neighborhood.",
     icon: MapPin,
     options: [
-      { value: "mission", label: "Mission District", description: "Valencia & 24th St" },
-      { value: "pacific-heights", label: "Pacific Heights", description: "Fillmore St" },
-      { value: "noe-valley", label: "Noe Valley", description: "24th St & Church" },
+      { value: "inner-sunset", label: "Inner Sunset", description: "Near Outer Village" },
+      { value: "western-addition", label: "Western Addition / NoPa", description: "Near Canvas Church" },
       { value: "any", label: "I'm flexible", description: "Show all locations" },
     ],
   },
@@ -48,75 +35,64 @@ const questions: Question[] = [
     subtitle: "Select your preferred schedule.",
     icon: Calendar,
     options: [
-      { value: "weekday-morning", label: "Weekday Mornings", description: "Mon-Fri before noon" },
-      { value: "weekday-afternoon", label: "Weekday Afternoons", description: "Mon-Fri after noon" },
-      { value: "weekend", label: "Weekends", description: "Saturday & Sunday" },
+      { value: "tuesday", label: "Tuesday Afternoons", description: "3:00 PM at Outer Village" },
+      { value: "wednesday", label: "Wednesday Mornings", description: "10:00 AM at Canvas Church" },
       { value: "any", label: "I'm flexible", description: "Any time works" },
     ],
   },
 ];
 
-// Sample recommended classes based on answers
-const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => {
-  // In a real app, this would filter from a database
-  const allClasses: ClassData[] = [
-    {
-      id: "1",
-      title: "Baby & Me Music",
-      ageRange: "0-12 months",
-      description: "Gentle rhythms and lullabies to bond with your baby through the power of music.",
-      image: babyClassImage,
-      schedule: "Mondays",
-      time: "10:00 AM - 10:45 AM",
-      location: "Mission District Studio",
-      spotsLeft: 3,
-      totalSpots: 12,
-      price: 35,
-      featured: true,
-    },
-    {
-      id: "2",
-      title: "Toddler Tunes",
-      ageRange: "1-2 years",
-      description: "Energetic songs, movement, and simple instruments for curious toddlers.",
-      image: toddlerClassImage,
-      schedule: "Tuesdays & Thursdays",
-      time: "9:30 AM - 10:15 AM",
-      location: "Pacific Heights Center",
-      spotsLeft: 5,
-      totalSpots: 10,
-      price: 35,
-    },
-    {
-      id: "3",
-      title: "Little Movers",
-      ageRange: "2-3 years",
-      description: "Dance, sing, and explore rhythm with high-energy activities for active toddlers.",
-      image: toddlerClassImage,
-      schedule: "Wednesdays",
-      time: "11:00 AM - 11:45 AM",
-      location: "Noe Valley Studio",
-      spotsLeft: 8,
-      totalSpots: 12,
-      price: 35,
-    },
-    {
-      id: "4",
-      title: "Preschool Beats",
-      ageRange: "3-4 years",
-      description: "Collaborative music-making with instruments, singing, and creative expression.",
-      image: preschoolClassImage,
-      schedule: "Fridays",
-      time: "3:30 PM - 4:15 PM",
-      location: "Mission District Studio",
-      spotsLeft: 2,
-      totalSpots: 10,
-      price: 40,
-      featured: true,
-    },
-  ];
+const allClasses: ClassData[] = [
+  {
+    id: "play-canvas",
+    title: "PLAY Music",
+    ageRange: "0-5 years",
+    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
+    image: babyClassImage,
+    schedule: "Wednesdays",
+    time: "10:00 AM - 10:45 AM",
+    location: "Canvas Church",
+    spotsLeft: 5,
+    totalSpots: 12,
+    price: 35,
+    featured: true,
+    registrationUrl: "https://app.mainstreetsites.com/classes.aspx?dmn=5096&sem=52047#tabs",
+  },
+  {
+    id: "play-outer-village",
+    title: "PLAY Music",
+    ageRange: "0-5 years",
+    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
+    image: babyClassImage,
+    schedule: "Tuesdays",
+    time: "3:00 PM - 3:45 PM",
+    location: "Outer Village, Inner Sunset",
+    spotsLeft: 5,
+    totalSpots: 12,
+    price: 35,
+    featured: true,
+    registrationUrl: "https://www.hisawyer.com/outer-village/schedules/activity-set/1734026?day=2026-02-24&view=cal&source=all-activities",
+  },
+];
 
-  return allClasses.slice(0, 3);
+// Filter classes based on answers
+const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => {
+  return allClasses.filter((cls) => {
+    const locAnswer = answers.location;
+    const schedAnswer = answers.schedule;
+
+    const matchesLocation =
+      !locAnswer || locAnswer === "any" ||
+      (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
+      (locAnswer === "western-addition" && cls.location.includes("Canvas Church"));
+
+    const matchesSchedule =
+      !schedAnswer || schedAnswer === "any" ||
+      (schedAnswer === "tuesday" && cls.schedule === "Tuesdays") ||
+      (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
+
+    return matchesLocation && matchesSchedule;
+  });
 };
 
 export default function ClassFinderPage() {
