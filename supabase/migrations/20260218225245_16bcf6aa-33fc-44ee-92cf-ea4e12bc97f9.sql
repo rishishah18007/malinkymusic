@@ -1,0 +1,1 @@
+ALTER TABLE public.classes ADD COLUMN registration_url text;

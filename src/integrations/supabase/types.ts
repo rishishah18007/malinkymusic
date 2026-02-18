@@ -144,6 +144,7 @@ export type Database = {
           is_featured: boolean
           location_id: string | null
           price: number
+          registration_url: string | null
           schedule: string
           start_time: string
           title: string
@@ -162,6 +163,7 @@ export type Database = {
           is_featured?: boolean
           location_id?: string | null
           price: number
+          registration_url?: string | null
           schedule: string
           start_time: string
           title: string
@@ -180,6 +182,7 @@ export type Database = {
           is_featured?: boolean
           location_id?: string | null
           price?: number
+          registration_url?: string | null
           schedule?: string
           start_time?: string
           title?: string
