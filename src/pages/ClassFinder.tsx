@@ -84,7 +84,7 @@ const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => 
     const matchesLocation =
       !locAnswer || locAnswer === "any" ||
       (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
-      (locAnswer === "western-addition" && cls.location.includes("Canvas Church"));
+      (locAnswer === "presidio" && cls.location.includes("Canvas Church"));
 
     const matchesSchedule =
       !schedAnswer || schedAnswer === "any" ||
