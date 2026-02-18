@@ -164,7 +164,7 @@ export default function PrivateLessons() {
               <CardContent className="p-8 lg:p-10">
                 <div className="flex flex-col lg:flex-row gap-8 items-center">
                   <div className="flex-shrink-0">
-                    <div className="h-32 w-32 lg:h-40 lg:w-40 rounded-full overflow-hidden">
+                    <div className="h-48 w-48 lg:h-60 lg:w-60 rounded-full overflow-hidden">
                       <img src={emiliaPhoto} alt="Emilia - Voice & Oboe Instructor" className="h-full w-full object-cover" />
                     </div>
                   </div>
