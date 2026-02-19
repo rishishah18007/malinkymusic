@@ -151,7 +151,7 @@ const LibraryPrograms = () => {
                 className="flex gap-4 bg-background rounded-xl shadow-soft p-4 sm:p-5 border border-border/50 hover:shadow-card transition-shadow duration-200"
               >
                 {/* Date badge */}
-                <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-primary flex flex-col items-center justify-center text-primary-foreground">
+                <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-tertiary flex flex-col items-center justify-center text-tertiary-foreground">
                   <span className="text-[0.65rem] sm:text-xs font-bold tracking-wider uppercase">{event.month}</span>
                   <span className="text-xl sm:text-2xl font-bold leading-none">{event.day}</span>
                 </div>
