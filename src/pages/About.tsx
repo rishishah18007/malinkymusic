@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden py-20 lg:py-28">
         <div className="absolute inset-0">
           <img src={aboutHero} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-foreground/60" />
+          <div className="absolute inset-0 bg-foreground/35" />
         </div>
         <div className="container-page text-center relative z-10">
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
