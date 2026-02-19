@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Library, Music, Users, Calendar, MapPin } from "lucide-react";
+import { Library, Calendar } from "lucide-react";
 import libraryProgramPhoto from "@/assets/library-program.jpg";
 
 const LibraryPrograms = () => {
@@ -62,49 +62,112 @@ const LibraryPrograms = () => {
         </div>
       </section>
 
-      {/* Features */}
+      {/* Upcoming Library Events */}
       <section className="py-16 lg:py-24 bg-muted/30">
         <div className="container-page">
-          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-12">
-            What to Expect
+          <h2 className="font-display text-3xl font-bold text-foreground text-center mb-4">
+            Upcoming Library Events
           </h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="bg-background rounded-xl p-6 shadow-soft text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
-                <Music className="h-6 w-6" />
+          <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+            Find a free Malinky Music class at a library near you!
+          </p>
+          <div className="grid gap-4 max-w-3xl mx-auto">
+            {[
+              {
+                library: "Redwood Shores Branch Library",
+                date: "February 7, 2025",
+                time: "11:00 AM – 11:30 AM",
+                description: "Monthly PLAY music and movement class! The first Saturday of every month.",
+                month: "FEB",
+                day: "7",
+              },
+              {
+                library: "Redwood Shores Branch Library",
+                date: "March 7, 2025",
+                time: "11:00 AM – 11:30 AM",
+                description: "Monthly PLAY music and movement class! The first Saturday of every month.",
+                month: "MAR",
+                day: "7",
+              },
+              {
+                library: "San Francisco Public Library – Sunset Branch",
+                date: "April 18, 2025",
+                time: "4:30 PM – 5:00 PM",
+                description: "Bilingual music & movement class.",
+                month: "APR",
+                day: "18",
+              },
+              {
+                library: "San Francisco Public Library – Mission Branch",
+                date: "April 26, 2025",
+                time: "1:00 PM – 1:45 PM",
+                description: "Día de Los Niños/Libros Celebration!",
+                month: "APR",
+                day: "26",
+              },
+              {
+                library: "Redwood Shores Branch Library",
+                date: "May 2, 2025",
+                time: "11:00 AM – 11:30 AM",
+                description: "Monthly PLAY music and movement class! The first Saturday of every month.",
+                month: "MAY",
+                day: "2",
+              },
+              {
+                library: "Redwood Shores Branch Library",
+                date: "June 6, 2025",
+                time: "11:00 AM – 11:30 AM",
+                description: "Monthly PLAY music and movement class! The first Saturday of every month.",
+                month: "JUN",
+                day: "6",
+              },
+              {
+                library: "Redwood Shores Branch Library",
+                date: "July 5, 2025",
+                time: "11:00 AM – 11:30 AM",
+                description: "Monthly PLAY music and movement class! The first Saturday of every month.",
+                month: "JUL",
+                day: "5",
+              },
+              {
+                library: "Sunnyvale Library",
+                date: "July 21, 2025",
+                time: "11:00 AM – 11:30 AM",
+                description: "Bilingual Spanish-English music and movement class.",
+                month: "JUL",
+                day: "21",
+              },
+              {
+                library: "Redwood Shores Branch Library",
+                date: "August 8, 2025",
+                time: "11:00 AM – 11:30 AM",
+                description: "Monthly PLAY music and movement class! The first Saturday of every month.",
+                month: "AUG",
+                day: "8",
+              },
+            ].map((event, index) => (
+              <div
+                key={index}
+                className="flex gap-4 bg-background rounded-xl shadow-soft p-4 sm:p-5 border border-border/50 hover:shadow-card transition-shadow duration-200"
+              >
+                {/* Date badge */}
+                <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-primary flex flex-col items-center justify-center text-primary-foreground">
+                  <span className="text-[0.65rem] sm:text-xs font-bold tracking-wider uppercase">{event.month}</span>
+                  <span className="text-xl sm:text-2xl font-bold leading-none">{event.day}</span>
+                </div>
+                {/* Event details */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-display font-bold text-foreground text-sm sm:text-base leading-tight">
+                    {event.library}
+                  </h3>
+                  <div className="flex items-center gap-1.5 mt-1 text-primary">
+                    <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium">{event.time}</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 italic">{event.description}</p>
+                </div>
               </div>
-              <h3 className="font-display font-semibold text-foreground mb-2">Live Music</h3>
-              <p className="text-sm text-muted-foreground">
-                Engaging songs and melodies performed live for you and your little one
-              </p>
-            </div>
-            <div className="bg-background rounded-xl p-6 shadow-soft text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
-                <Users className="h-6 w-6" />
-              </div>
-              <h3 className="font-display font-semibold text-foreground mb-2">All Ages Welcome</h3>
-              <p className="text-sm text-muted-foreground">
-                Classes designed for babies, toddlers, and preschoolers with their caregivers
-              </p>
-            </div>
-            <div className="bg-background rounded-xl p-6 shadow-soft text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
-                <Calendar className="h-6 w-6" />
-              </div>
-              <h3 className="font-display font-semibold text-foreground mb-2">Drop-In Format</h3>
-              <p className="text-sm text-muted-foreground">
-                No registration required—just show up and join the fun!
-              </p>
-            </div>
-            <div className="bg-background rounded-xl p-6 shadow-soft text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary mb-4">
-                <MapPin className="h-6 w-6" />
-              </div>
-              <h3 className="font-display font-semibold text-foreground mb-2">Multiple Locations</h3>
-              <p className="text-sm text-muted-foreground">
-                Find a library program near you throughout the Bay Area
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
