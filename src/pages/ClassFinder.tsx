@@ -93,24 +93,29 @@ const allClasses: ClassData[] = [
 
 // Filter classes based on answers
 const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => {
-  return allClasses.filter((cls) => {
-    const locAnswer = answers.location;
-    const schedAnswer = answers.schedule;
+  const locAnswer = answers.location;
+  const schedAnswer = answers.schedule;
 
-    const matchesLocation =
-      !locAnswer || locAnswer === "any" ||
-      (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
-      (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
-      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park"));
+  const matchesLocation = (cls: ClassData) =>
+    !locAnswer || locAnswer === "any" ||
+    (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
+    (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
+    (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park"));
 
-    const matchesSchedule =
-      !schedAnswer || schedAnswer === "any" ||
-      (schedAnswer === "tuesday-morning" && cls.time.includes("11:00 AM")) ||
-      (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
-      (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
+  const matchesSchedule = (cls: ClassData) =>
+    !schedAnswer || schedAnswer === "any" ||
+    (schedAnswer === "tuesday-morning" && cls.time.includes("11:00 AM")) ||
+    (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
+    (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
 
-    return matchesLocation && matchesSchedule;
-  });
+  // First try exact matches (both location and schedule)
+  const exactMatches = allClasses.filter(cls => matchesLocation(cls) && matchesSchedule(cls));
+
+  // If exact matches exist, return them; otherwise return classes matching either preference
+  if (exactMatches.length > 0) return exactMatches;
+
+  const broadMatches = allClasses.filter(cls => matchesLocation(cls) || matchesSchedule(cls));
+  return broadMatches;
 };
 
 
@@ -150,6 +155,21 @@ export default function ClassFinderPage() {
 
   const recommendedClasses = getRecommendedClasses(answers);
 
+  // Determine if we're showing exact or broad matches for messaging
+  const locAnswer = answers.location;
+  const schedAnswer = answers.schedule;
+  const hasExactMatch = recommendedClasses.some(cls => {
+    const locMatch = !locAnswer || locAnswer === "any" ||
+      (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
+      (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
+      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park"));
+    const schedMatch = !schedAnswer || schedAnswer === "any" ||
+      (schedAnswer === "tuesday-morning" && cls.time.includes("11:00 AM")) ||
+      (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
+      (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
+    return locMatch && schedMatch;
+  });
+
   if (showResults) {
     return (
       <Layout>
@@ -159,13 +179,15 @@ export default function ClassFinderPage() {
             <div className="text-center mb-12 animate-fade-in-up">
               <div className="inline-flex items-center gap-2 rounded-full bg-tertiary/20 px-4 py-2 text-sm font-medium text-tertiary mb-4">
                 <Sparkles className="h-4 w-4" />
-                <span>We found your perfect matches!</span>
+                <span>{hasExactMatch ? "We found your perfect matches!" : "Here are your closest options!"}</span>
               </div>
               <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground">
-                Your Recommended Classes
+                {hasExactMatch ? "Your Recommended Classes" : "Closest Available Classes"}
               </h1>
               <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-                Based on your preferences, here are the classes we think you and your little one will love.
+                {hasExactMatch
+                  ? "Based on your preferences, here are the classes we think you and your little one will love."
+                  : "No single class matches both your location and schedule preferences, so we're showing you classes that fit either one."}
               </p>
             </div>
 
