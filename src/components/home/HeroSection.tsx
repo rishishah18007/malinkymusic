@@ -22,7 +22,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      <div className="container-page py-12 lg:py-20">
+      <div className="container-page py-10 lg:py-14">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Text Content */}
           <div className="space-y-6 text-center lg:text-left animate-fade-in-up">

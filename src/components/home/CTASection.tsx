@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export function CTASection() {
   return (
-    <section className="py-16 lg:py-24 bg-gradient-hero">
+    <section className="py-10 lg:py-14 bg-gradient-hero">
       <div className="container-page text-center">
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full bg-background/20 backdrop-blur-sm px-4 py-2 text-sm font-medium text-primary-foreground">
