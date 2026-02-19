@@ -186,7 +186,7 @@ export default function AboutPage() {
             </div>
             <div className="text-center">
               <div className="h-32 w-32 rounded-full overflow-hidden border-4 border-tertiary/20 shadow-card mx-auto mb-4">
-                <img src={rishiPhoto} alt="Rishi Shah" className="w-full h-full object-cover" />
+                <img src={rishiPhoto} alt="Rishi Shah" className="w-full h-full object-cover object-top" />
               </div>
               <h3 className="font-display text-lg font-bold text-foreground">Rishi Shah</h3>
               <p className="text-primary font-medium text-sm mb-2">Founder</p>
