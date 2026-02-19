@@ -304,6 +304,23 @@ export default function ClassesPage() {
           )}
         </div>
       </section>
+
+      {/* Private Group Classes Section */}
+      <section className="py-12 lg:py-16 bg-muted/40">
+        <div className="container-page">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
+              Private Group Classes
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
+              Host a private group class and bring the fun of Malinky music into your own space, with your own group, on your schedule. Utilizing the renowned PLAY curriculum, our group music and movement classes are 40-45 minutes of fun, interactive music and play for children.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              With six, eight, and ten week options, all you need to start is a location in the Bay Area and 4 more friends who want to join in the magic.
+            </p>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }
