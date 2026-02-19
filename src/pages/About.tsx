@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Heart, Music, Users, Sparkles, Globe, BookOpen, Award, ExternalLink } from "lucide-react";
 import emiliaPhoto from "@/assets/emilia-portrait.jpg";
 import rishiPhoto from "@/assets/rishi-photo.jpg";
+import ruthPhoto from "@/assets/ruth-photo.jpg";
 
 const spotifyTracks = [
   { title: "Elefante", artists: "Cricket Sings, Emilia Lopez-Yañez", url: "https://open.spotify.com/track/5kE1Y0DkFGW9KYicjrZdeS" },
@@ -194,8 +195,8 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="text-center">
-              <div className="h-32 w-32 rounded-full overflow-hidden border-4 border-secondary/20 shadow-card mx-auto mb-4 bg-muted flex items-center justify-center">
-                <span className="text-3xl font-display font-bold text-muted-foreground">R</span>
+              <div className="h-32 w-32 rounded-full overflow-hidden border-4 border-secondary/20 shadow-card mx-auto mb-4">
+                <img src={ruthPhoto} alt="Ruth Weber" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-display text-lg font-bold text-foreground">Ruth Weber</h3>
               <p className="text-primary font-medium text-sm mb-2">Co-Writer & Developer</p>
