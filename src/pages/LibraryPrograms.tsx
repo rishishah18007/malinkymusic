@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Library, Music, Users, Calendar, MapPin } from "lucide-react";
+import libraryProgramPhoto from "@/assets/library-program.jpg";
 
 const LibraryPrograms = () => {
   return (
@@ -53,8 +54,8 @@ const LibraryPrograms = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-2xl bg-primary/10 flex items-center justify-center">
-                <Library className="h-32 w-32 text-primary/40" />
+              <div className="aspect-square rounded-2xl overflow-hidden">
+                <img src={libraryProgramPhoto} alt="Malinky Music library program" className="h-full w-full object-cover" />
               </div>
             </div>
           </div>
