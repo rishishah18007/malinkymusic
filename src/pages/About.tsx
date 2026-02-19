@@ -5,6 +5,7 @@ import { Heart, Music, Users, Sparkles, Globe, BookOpen, Award, ExternalLink, Ch
 import emiliaPhoto from "@/assets/emilia-guitar.jpg";
 import rishiPhoto from "@/assets/rishi-photo.jpg";
 import ruthPhoto from "@/assets/ruth-photo.jpg";
+import aboutHero from "@/assets/about-hero.jpg";
 
 const spotifyTracks = [
   { title: "Elefante", artists: "Cricket Sings, Emilia Lopez-Yañez", url: "https://open.spotify.com/track/5kE1Y0DkFGW9KYicjrZdeS" },
@@ -18,15 +19,16 @@ export default function AboutPage() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/15 via-tertiary/10 to-secondary/10 py-12 lg:py-18">
-        <div className="absolute top-8 right-12 text-secondary/15 animate-float-note">
-          <Music className="h-12 w-12" />
+      <section className="relative overflow-hidden py-20 lg:py-28">
+        <div className="absolute inset-0">
+          <img src={aboutHero} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/60" />
         </div>
         <div className="container-page text-center relative z-10">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
             Welcome to Malinky Music
           </h1>
-          <p className="mt-4 text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="mt-4 text-lg lg:text-xl text-white/85 max-w-3xl mx-auto leading-relaxed">
             Fostering a joyful community of tiny humans and their families through music, movement, and meaningful connection.
           </p>
         </div>
