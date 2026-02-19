@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ClassCard, ClassData } from "@/components/ui/ClassCard";
-import { ArrowLeft, ArrowRight, Baby, MapPin, Calendar, Sparkles, CheckCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Calendar, Sparkles, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import babyClassImage from "@/assets/baby-class.jpg";
-import toddlerClassImage from "@/assets/toddler-class.jpg";
-import preschoolClassImage from "@/assets/preschool-class.jpg";
+import mountainLakeParkImage from "/images/mountain-lake-park-class.jpg";
 
 interface Question {
   id: string;
@@ -26,6 +25,7 @@ const questions: Question[] = [
     options: [
       { value: "inner-sunset", label: "Inner Sunset", description: "Near Outer Village" },
       { value: "presidio", label: "Presidio", description: "Near Canvas Church" },
+      { value: "inner-richmond", label: "Inner Richmond", description: "Near Mountain Lake Park" },
       { value: "any", label: "I'm flexible", description: "Show all locations" },
     ],
   },
@@ -35,7 +35,8 @@ const questions: Question[] = [
     subtitle: "Select your preferred schedule.",
     icon: Calendar,
     options: [
-      { value: "tuesday", label: "Tuesday Afternoons", description: "3:00 PM at Outer Village" },
+      { value: "tuesday-morning", label: "Tuesday Mornings", description: "11:00 AM at Mountain Lake Park" },
+      { value: "tuesday-afternoon", label: "Tuesday Afternoons", description: "3:00 PM at Outer Village" },
       { value: "wednesday", label: "Wednesday Mornings", description: "10:00 AM at Canvas Church" },
       { value: "any", label: "I'm flexible", description: "Any time works" },
     ],
@@ -51,7 +52,7 @@ const allClasses: ClassData[] = [
     image: babyClassImage,
     schedule: "Wednesdays",
     time: "10:00 AM - 10:45 AM",
-    location: "Canvas Church",
+    location: "Canvas Church, Presidio",
     spotsLeft: 5,
     totalSpots: 12,
     price: 35,
@@ -73,6 +74,21 @@ const allClasses: ClassData[] = [
     featured: true,
     registrationUrl: "https://www.hisawyer.com/outer-village/schedules/activity-set/1734026?day=2026-02-24&view=cal&source=all-activities",
   },
+  {
+    id: "play-mountain-lake-park",
+    title: "Spring PLAY Music",
+    ageRange: "0-5 years",
+    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
+    image: mountainLakeParkImage,
+    schedule: "Tuesdays",
+    time: "11:00 AM - 11:45 AM",
+    location: "Mountain Lake Park, Inner Richmond",
+    spotsLeft: 5,
+    totalSpots: 12,
+    price: 35,
+    featured: false,
+    registrationUrl: "https://app.mainstreetsites.com/classes.aspx?dmn=5096&sem=52047#tabs",
+  },
 ];
 
 // Filter classes based on answers
@@ -84,16 +100,19 @@ const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => 
     const matchesLocation =
       !locAnswer || locAnswer === "any" ||
       (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
-      (locAnswer === "presidio" && cls.location.includes("Canvas Church"));
+      (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
+      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park"));
 
     const matchesSchedule =
       !schedAnswer || schedAnswer === "any" ||
-      (schedAnswer === "tuesday" && cls.schedule === "Tuesdays") ||
+      (schedAnswer === "tuesday-morning" && cls.time.includes("11:00 AM")) ||
+      (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
       (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
 
     return matchesLocation && matchesSchedule;
   });
 };
+
 
 export default function ClassFinderPage() {
   const [currentStep, setCurrentStep] = useState(0);
