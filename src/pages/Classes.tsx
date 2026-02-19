@@ -315,9 +315,17 @@ export default function ClassesPage() {
             <p className="text-muted-foreground text-lg leading-relaxed mb-4">
               Host a private group class and bring the fun of Malinky music into your own space, with your own group, on your schedule. Utilizing the renowned PLAY curriculum, our group music and movement classes are 40-45 minutes of fun, interactive music and play for children.
             </p>
-            <p className="text-muted-foreground text-lg leading-relaxed">
+            <p className="text-muted-foreground text-lg leading-relaxed mb-4">
               With six, eight, and ten week options, all you need to start is a location in the Bay Area and 4 more friends who want to join in the magic.
             </p>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              We also offer <strong className="text-foreground">private events</strong> and <strong className="text-foreground">birthday parties</strong> — a perfect way to celebrate your little one with the gift of music!
+            </p>
+            <a href="mailto:info@malinkymusic.com">
+              <Button size="lg" className="gap-2">
+                Inquire Now
+              </Button>
+            </a>
           </div>
         </div>
       </section>
