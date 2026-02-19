@@ -31,7 +31,7 @@ export function CTASection() {
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <a href="https://example.com/mailing-list" target="_blank" rel="noopener noreferrer">
+            <a href="https://malinkymusic.us12.list-manage.com/subscribe/post?u=10e007957d12bac66b194f1a8&id=6e3d977210&f_id=003066e9f0" target="_blank" rel="noopener noreferrer">
               <Button 
                 size="lg" 
                 variant="outline"
