@@ -60,7 +60,7 @@ export function HeroSection() {
             </div>
 
             {/* Social Proof */}
-            <div className="flex items-center justify-center lg:justify-start gap-6 pt-4">
+            <a href="https://maps.app.goo.gl/XtaGvUQC1LbcNge6A?g_st=iw" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center lg:justify-start gap-6 pt-4 group">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
                   <div
@@ -79,11 +79,11 @@ export function HeroSection() {
                     <Star key={i} className="h-4 w-4 fill-accent text-accent" />
                   ))}
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                   Loved by <strong className="text-foreground">500+</strong> Bay Area families
                 </p>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Hero Image */}
