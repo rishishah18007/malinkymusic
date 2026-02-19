@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Heart, Music, Users, Sparkles, Globe, BookOpen, Award, ExternalLink } from "lucide-react";
+import { Heart, Music, Users, Sparkles, Globe, BookOpen, Award, ExternalLink, ChevronDown } from "lucide-react";
 import emiliaPhoto from "@/assets/emilia-guitar.jpg";
 import rishiPhoto from "@/assets/rishi-photo.jpg";
 import ruthPhoto from "@/assets/ruth-photo.jpg";
@@ -32,6 +32,32 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Mission - Connection in Every Note */}
+      <section className="py-10 lg:py-14 bg-muted/30">
+        <div className="container-page">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 rounded-full bg-secondary/20 px-4 py-2 text-sm font-semibold text-secondary-foreground mb-4">
+              <Heart className="h-4 w-4" />
+              Our Mission
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-5">
+              Connection in Every Note
+            </h2>
+            <p className="text-muted-foreground leading-relaxed text-lg mb-4">
+              Our mission is to foster a joyful community of tiny humans and their families, creating moments of laughter, connection, and musical memories that will be treasured for generations.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-lg mb-6">
+              Through our different musical offerings, we aim to support the developmental milestones of children ages 0–5. Engaging with music and movement at this early stage can enhance language skills, improve motor development, boost emotional expression, and encourage social bonding. By nurturing these essential skills, we hope to inspire a lifelong love for learning and creativity while celebrating the magic of childhood together.
+            </p>
+            <a href="#our-music" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-200">
+              <Music className="h-5 w-5" />
+              Take a Listen
+              <ChevronDown className="h-4 w-4 animate-bounce-gentle" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* About & Why Malinky */}
       <section className="py-10 lg:py-14">
         <div className="container-page">
@@ -57,27 +83,6 @@ export default function AboutPage() {
                 <img src={emiliaPhoto} alt="Emilia Lopez-Yañez, founder of Malinky Music" className="w-full h-full object-cover" />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission */}
-      <section className="py-10 lg:py-14 bg-muted/30">
-        <div className="container-page">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-secondary/20 px-4 py-2 text-sm font-semibold text-secondary-foreground mb-4">
-              <Heart className="h-4 w-4" />
-              Our Mission
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-5">
-              Connection in Every Note
-            </h2>
-            <p className="text-muted-foreground leading-relaxed text-lg mb-4">
-              Our mission is to foster a joyful community of tiny humans and their families, creating moments of laughter, connection, and musical memories that will be treasured for generations.
-            </p>
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              Through our different musical offerings, we aim to support the developmental milestones of children ages 0–5. Engaging with music and movement at this early stage can enhance language skills, improve motor development, boost emotional expression, and encourage social bonding. By nurturing these essential skills, we hope to inspire a lifelong love for learning and creativity while celebrating the magic of childhood together.
-            </p>
           </div>
         </div>
       </section>
@@ -209,7 +214,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Music */}
-      <section className="py-10 lg:py-14 bg-gradient-to-b from-muted/40 to-background">
+      <section id="our-music" className="py-10 lg:py-14 bg-gradient-to-b from-muted/40 to-background scroll-mt-4">
         <div className="container-page">
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 rounded-full bg-tertiary/20 px-4 py-2 text-sm font-semibold text-foreground mb-3">
