@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function CTASection() {
@@ -31,6 +31,16 @@ export function CTASection() {
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
+            <a href="https://example.com/mailing-list" target="_blank" rel="noopener noreferrer">
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="w-full sm:w-auto text-base border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              >
+                <Mail className="mr-2 h-4 w-4" />
+                Join Our Mailing List
+              </Button>
+            </a>
             <Link to="/contact">
               <Button 
                 size="lg" 
