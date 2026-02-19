@@ -306,7 +306,7 @@ export default function ClassesPage() {
       </section>
 
       {/* Private Group Classes Section */}
-      <section className="py-12 lg:py-16 bg-muted/40">
+      <section id="private-group-classes" className="py-12 lg:py-16 bg-muted/40">
         <div className="container-page">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">

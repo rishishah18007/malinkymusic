@@ -7,7 +7,7 @@ const footerLinks = {
     { name: "Baby Classes (0-1)", href: "/classes?age=0-1" },
     { name: "Toddler Classes (1-3)", href: "/classes?age=1-3" },
     { name: "Preschool Classes (3-5)", href: "/classes?age=3-5" },
-    { name: "Private Groups", href: "/private-groups" },
+    { name: "Private Group Classes", href: "/classes#private-group-classes" },
   ],
   company: [
     { name: "About Us", href: "/about" },
