@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import malinkyLogo from "@/assets/malinky-logo.png";
 
 const footerLinks = {
@@ -46,7 +46,7 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/p/Malinky-Music-61571842494222/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full p-2 bg-background/10 hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -55,22 +55,13 @@ export function Footer() {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/malinky.music/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full p-2 bg-background/10 hover:bg-primary hover:text-primary-foreground transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full p-2 bg-background/10 hover:bg-primary hover:text-primary-foreground transition-colors"
-                aria-label="YouTube"
-              >
-                <Youtube className="h-5 w-5" />
               </a>
             </div>
           </div>
