@@ -13,7 +13,7 @@ const footerLinks = {
     { name: "About Us", href: "/about" },
     { name: "Private Lessons", href: "/private-lessons" },
     { name: "Library Programs", href: "/library-programs" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "mailto:info@malinkymusic.com" },
   ],
   support: [
     { name: "FAQs", href: "/faqs" },
@@ -96,14 +96,23 @@ export function Footer() {
           <div>
             <h3 className="font-display text-lg font-semibold text-background mb-4">Company</h3>
             <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
+            {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-background/70 hover:text-primary transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.href.startsWith("mailto:") ? (
+                    <a
+                      href={link.href}
+                      className="text-sm text-background/70 hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-sm text-background/70 hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -119,11 +128,11 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:hello@malinkymusic.com"
+                  href="mailto:info@malinkymusic.com"
                   className="flex items-center gap-3 text-sm text-background/70 hover:text-primary transition-colors"
                 >
                   <Mail className="h-4 w-4 text-primary shrink-0" />
-                  <span>hello@malinkymusic.com</span>
+                  <span>info@malinkymusic.com</span>
                 </a>
               </li>
               <li>
