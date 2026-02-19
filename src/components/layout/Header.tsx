@@ -1,16 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, User, LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useAuth } from "@/hooks/useAuth";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { useLocation } from "react-router-dom";
 import malinkyLogo from "@/assets/malinky-logo.png";
 
@@ -26,13 +18,6 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
-  const { user, signOut } = useAuth();
-
-  const handleSignOut = async () => {
-    await signOut();
-    navigate("/");
-  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -69,40 +54,6 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
-          {user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="gap-2">
-                  <User className="h-4 w-4" />
-                  <span className="max-w-[120px] truncate">
-                    {user.user_metadata?.full_name || user.email?.split("@")[0]}
-                  </span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
-                <DropdownMenuItem asChild>
-                  <Link to="/dashboard">My Dashboard</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/dashboard/bookings">My Bookings</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/dashboard/children">My Children</Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleSignOut} className="text-destructive">
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Sign Out
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
-            <Link to="/auth">
-              <Button variant="ghost" size="sm" className="text-muted-foreground">
-                Log In
-              </Button>
-            </Link>
-          )}
           <Link to="/classes">
             <Button size="sm" className="shadow-soft">
               Book a Class
@@ -140,32 +91,7 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="pt-4 border-t border-border flex flex-col gap-2">
-              {user ? (
-                <>
-                  <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)}>
-                    <Button variant="outline" className="w-full justify-center">
-                      My Dashboard
-                    </Button>
-                  </Link>
-                  <Button 
-                    variant="ghost" 
-                    className="w-full justify-center text-destructive"
-                    onClick={() => {
-                      handleSignOut();
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    Sign Out
-                  </Button>
-                </>
-              ) : (
-                <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full justify-center">
-                    Log In
-                  </Button>
-                </Link>
-              )}
+            <div className="pt-4 border-t border-border">
               <Link to="/classes" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full justify-center">
                   Book a Class
