@@ -1,14 +1,14 @@
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Library, Calendar, MapPin, Clock, Music } from "lucide-react";
+import { Library, Calendar, MapPin, Clock, Music, ChevronDown } from "lucide-react";
 import libraryProgramPhoto from "@/assets/library-program.jpg";
 
 const LibraryPrograms = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/15 via-tertiary/10 to-secondary/10 py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/15 via-tertiary/10 to-secondary/10 py-14 lg:py-20">
         {/* Decorative elements */}
         <div className="absolute top-10 left-10 text-secondary/20 animate-float-note">
           <Music className="h-12 w-12" />
@@ -31,11 +31,16 @@ const LibraryPrograms = () => {
             Malinky Music partners with local libraries to bring <span className="font-semibold text-primary">free music classes</span> to families in our community. 
             Join us for singing, dancing, and musical fun!
           </p>
+          <a href="#library-events" className="inline-flex items-center gap-2 mt-8 text-primary font-semibold hover:gap-3 transition-all duration-200">
+            <Calendar className="h-5 w-5" />
+            View Upcoming Events
+            <ChevronDown className="h-4 w-4 animate-bounce-gentle" />
+          </a>
         </div>
       </section>
 
       {/* About Library Programs */}
-      <section className="py-16 lg:py-24">
+      <section className="py-10 lg:py-14">
         <div className="container-page">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div>
@@ -74,7 +79,7 @@ const LibraryPrograms = () => {
       </section>
 
       {/* Upcoming Library Events */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-muted/40 to-background relative overflow-hidden">
+      <section id="library-events" className="py-10 lg:py-14 bg-gradient-to-b from-muted/40 to-background relative overflow-hidden scroll-mt-4">
         {/* Subtle decorative background */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, hsl(var(--primary)) 1px, transparent 1px), radial-gradient(circle at 80% 20%, hsl(var(--secondary)) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
         <div className="container-page relative z-10">
@@ -200,7 +205,7 @@ const LibraryPrograms = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 lg:py-24">
+      <section className="py-10 lg:py-14">
         <div className="container-page text-center">
           <h2 className="font-display text-3xl font-bold text-foreground mb-4">
             Want More Music?
