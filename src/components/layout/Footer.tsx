@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
+import { Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 import malinkyLogo from "@/assets/malinky-logo.png";
 
 const footerLinks = {
@@ -133,15 +133,6 @@ export function Footer() {
                 >
                   <Mail className="h-4 w-4 text-primary shrink-0" />
                   <span>info@malinkymusic.com</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:+14155551234"
-                  className="flex items-center gap-3 text-sm text-background/70 hover:text-primary transition-colors"
-                >
-                  <Phone className="h-4 w-4 text-primary shrink-0" />
-                  <span>(415) 555-1234</span>
                 </a>
               </li>
             </ul>
