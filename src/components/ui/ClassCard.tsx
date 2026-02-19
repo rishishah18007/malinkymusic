@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, Clock, MapPin, Users } from "lucide-react";
+import { Calendar, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -90,17 +90,8 @@ export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
           </div>
         </div>
 
-        {/* Spots & Price */}
-        <div className="flex items-center justify-between pt-2 border-t border-border">
-          <div className="flex items-center gap-2">
-            <Users className={cn("h-4 w-4", isAlmostFull ? "text-destructive" : "text-tertiary")} />
-            <span className={cn(
-              "text-sm font-medium",
-              isFull ? "text-destructive" : "text-muted-foreground"
-            )}>
-              {isFull ? "Class Full" : "A few spots left"}
-            </span>
-          </div>
+        {/* Price */}
+        <div className="flex items-center justify-end pt-2 border-t border-border">
           <span className="text-lg font-bold text-foreground">
             ${classData.price}<span className="text-sm font-normal text-muted-foreground">/class</span>
           </span>
