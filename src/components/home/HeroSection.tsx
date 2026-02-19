@@ -58,32 +58,6 @@ export function HeroSection() {
                 </Button>
               </Link>
             </div>
-
-            {/* Social Proof */}
-            <a href="https://maps.app.goo.gl/XtaGvUQC1LbcNge6A?g_st=iw" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center lg:justify-start gap-6 pt-4 group">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="h-10 w-10 rounded-full border-2 border-background bg-muted"
-                    style={{
-                      backgroundImage: `url(https://i.pravatar.cc/100?img=${i + 10})`,
-                      backgroundSize: "cover",
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-left">
-                <div className="flex items-center gap-1">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                  ))}
-                </div>
-                <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                  Loved by <strong className="text-foreground">500+</strong> Bay Area families
-                </p>
-              </div>
-            </a>
           </div>
 
           {/* Hero Image */}
