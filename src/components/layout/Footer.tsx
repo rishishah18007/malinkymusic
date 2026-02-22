@@ -41,8 +41,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-background/70 leading-relaxed">
-              Joyful music classes where you and your child bond, grow, and play together. 
-              Serving families across San Francisco Bay Area.
+              Joyful music classes for ages 0 - 5 across San Francisco and the Bay Area.
             </p>
             <div className="flex gap-4">
               <a
