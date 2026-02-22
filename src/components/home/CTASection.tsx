@@ -17,7 +17,7 @@ export function CTASection() {
           </h2>
 
           <p className="text-lg lg:text-xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Find the perfect class for your family. Your first class is just a click away!
+            Joyful music classes for ages 0 - 5 across San Francisco and the Bay Area.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
