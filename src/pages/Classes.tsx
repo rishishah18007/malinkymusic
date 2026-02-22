@@ -97,7 +97,7 @@ export default function ClassesPage() {
         description: cls.description || "",
         image: cls.image_url || getImageForIndex(index),
         schedule: cls.schedule,
-        time: `${formatTime(cls.start_time)} - ${formatTime(cls.end_time)}`,
+        time: cls.start_time === "00:00:00" && cls.end_time === "00:00:00" ? "TBD" : `${formatTime(cls.start_time)} - ${formatTime(cls.end_time)}`,
         location: cls.locations?.name || "TBD",
         spotsLeft: Math.floor(Math.random() * cls.capacity), // TODO: Calculate from bookings
         totalSpots: cls.capacity,
