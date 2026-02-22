@@ -175,22 +175,16 @@ export default function PrivateLessons() {
                     <p className="text-primary font-medium mb-4">Voice & Oboe Instructor</p>
                     <div className="space-y-4 text-muted-foreground">
                       <p>
-                        Emilia brings over <strong className="text-foreground">10 years of teaching experience</strong> and 
-                        a passion for helping students discover their musical potential.
+                        Emilia has been an active teacher and performer throughout California for over a decade. She holds Bachelor's and Master's degrees in Music Performance from USC and Chapman University, bringing strong technical expertise and a deep passion for music to every lesson.
                       </p>
-                      <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                        <div className="flex items-center gap-2 bg-secondary/10 text-secondary-foreground rounded-full px-4 py-2 text-sm">
-                          <GraduationCap className="h-4 w-4 text-secondary" />
-                          <span>B.M. Voice & Oboe, Chapman University</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-primary/10 text-foreground rounded-full px-4 py-2 text-sm">
-                          <GraduationCap className="h-4 w-4 text-primary" />
-                          <span>M.M. Oboe Performance, USC</span>
-                        </div>
-                      </div>
                       <p>
-                        As an active performer throughout California, Emilia combines her professional experience 
-                        with a nurturing teaching approach to inspire students of all ages and skill levels.
+                        Her students have been accepted into prestigious universities, the San Francisco Youth Symphony, and renowned summer festivals. Emilia works closely with each student to achieve their goals—whether that means earning a lead role in a musical or simply building the confidence to sing at karaoke. Every milestone matters.
+                      </p>
+                      <p>
+                        As a freelance musician, Emilia has performed at Carnegie Hall, Davies Symphony Hall, and the Hollywood Bowl. She most recently served as principal oboe in Jacob Collier's debut Audience Orchestra and has recorded on film and video game soundtracks, as well as Billboard-charting albums alongside artists including Alan White (YES) and Dan Aykroyd.
+                      </p>
+                      <p>
+                        Emilia is excited to continue sharing her love of music and helping each student grow with confidence and artistry.
                       </p>
                     </div>
                   </div>
