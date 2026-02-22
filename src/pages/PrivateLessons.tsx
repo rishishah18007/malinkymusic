@@ -19,18 +19,18 @@ const lessonPricing = [
   {
     duration: "30 minutes",
     price: 50,
-    description: "Perfect for beginners or focused practice sessions",
+    description: "Perfect for beginners and young learners",
   },
   {
     duration: "45 minutes",
     price: 75,
-    description: "Ideal balance of instruction and practice time",
+    description: "Ideal for students of all ages and levels",
     popular: true,
   },
   {
     duration: "60 minutes",
     price: 100,
-    description: "Comprehensive lessons for serious students",
+    description: "Comprehensive lessons for students wanting to dive deep and excel",
   },
 ];
 
