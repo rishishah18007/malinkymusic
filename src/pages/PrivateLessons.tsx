@@ -250,7 +250,7 @@ export default function PrivateLessons() {
           </div>
 
           <p className="text-center text-muted-foreground mt-8 text-sm">
-            * For students ages 5 and up. Contact us for package deals and sibling discounts.
+            * For students ages 5 and up. Contact us for a free trial lesson.
           </p>
         </div>
       </section>
