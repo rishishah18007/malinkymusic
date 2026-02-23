@@ -42,7 +42,7 @@ export function HeroSection() {
             <p className="text-lg lg:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
               At Malinky Music, every song becomes a chance for you and your child to 
               <strong className="text-foreground"> bond, grow, and play</strong>. 
-              Joyful music classes for ages 0–5 across San Francisco Bay Area.
+              Joyful music classes for ages 0–5 across San Francisco and the Bay Area.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
