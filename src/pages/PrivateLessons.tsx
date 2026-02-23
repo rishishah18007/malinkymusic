@@ -93,7 +93,7 @@ export default function PrivateLessons() {
         <div className="container-page">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Private <span className="text-primary">Lessons</span>
+              Private <span className="text-secondary">Lessons</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground mb-8">
               Personalized voice and oboe instruction for students ages 5 and up. 
@@ -127,10 +127,10 @@ export default function PrivateLessons() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {lessonTypes.map((lesson) => (
-              <Card key={lesson.title} className="border-2 hover:border-primary/50 transition-colors">
+              <Card key={lesson.title} className="border-2 hover:border-secondary/50 transition-colors">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                    <lesson.icon className="h-8 w-8 text-primary" />
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
+                    <lesson.icon className="h-8 w-8 text-secondary" />
                   </div>
                   <CardTitle className="font-display text-2xl">{lesson.title}</CardTitle>
                 </CardHeader>
@@ -144,7 +144,7 @@ export default function PrivateLessons() {
           {/* Location Options */}
           <div className="mt-12 flex flex-wrap justify-center gap-6">
             <div className="flex items-center gap-3 bg-card rounded-full px-6 py-3 shadow-soft">
-              <MapPin className="h-5 w-5 text-primary" />
+              <MapPin className="h-5 w-5 text-secondary" />
               <span className="font-medium">In-Person: Laurel Heights Studio</span>
             </div>
             <div className="flex items-center gap-3 bg-card rounded-full px-6 py-3 shadow-soft">
@@ -177,7 +177,7 @@ export default function PrivateLessons() {
                     <h3 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-2">
                       Emilia
                     </h3>
-                    <p className="text-primary font-medium mb-4">Voice & Oboe Instructor</p>
+                    <p className="text-secondary font-medium mb-4">Voice & Oboe Instructor</p>
                     <div className="space-y-4 text-muted-foreground">
                       <p>
                         Emilia has been an active teacher and performer throughout California for over a decade. She holds Bachelor's and Master's degrees in Music Performance from USC and Chapman University, bringing strong technical expertise and a deep passion for music to every lesson.
@@ -216,11 +216,11 @@ export default function PrivateLessons() {
             {lessonPricing.map((option) => (
               <Card 
                 key={option.duration} 
-                className={`relative ${option.popular ? 'border-2 border-primary shadow-glow' : 'border-2'}`}
+                className={`relative ${option.popular ? 'border-2 border-secondary shadow-glow' : 'border-2'}`}
               >
                 {option.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full">
+                    <span className="bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1 rounded-full">
                       Most Popular
                     </span>
                   </div>
@@ -230,7 +230,7 @@ export default function PrivateLessons() {
                     <Clock className="h-5 w-5 text-muted-foreground" />
                     <CardTitle className="font-display text-xl">{option.duration}</CardTitle>
                   </div>
-                  <div className="text-4xl font-bold text-primary">
+                  <div className="text-4xl font-bold text-secondary">
                     ${option.price}
                   </div>
                   <p className="text-sm text-muted-foreground">per lesson</p>
@@ -258,12 +258,12 @@ export default function PrivateLessons() {
       {/* Testimonials - hidden for now */}
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-20 bg-primary">
+      <section className="py-16 lg:py-20 bg-secondary">
         <div className="container-page text-center">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-foreground mb-4">
             Ready to Start Your Musical Journey?
           </h2>
-          <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+          <p className="text-secondary-foreground/80 max-w-2xl mx-auto mb-8">
             Book your first lesson today and discover the joy of learning voice or oboe with personalized instruction.
           </p>
           <Button size="lg" variant="secondary" className="shadow-soft" onClick={() => openInquiry()}>
