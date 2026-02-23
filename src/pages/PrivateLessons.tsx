@@ -266,7 +266,7 @@ export default function PrivateLessons() {
           <p className="text-secondary-foreground/80 max-w-2xl mx-auto mb-8">
             Book your first lesson today and discover the joy of learning voice or oboe with personalized instruction.
           </p>
-          <Button size="lg" variant="secondary" className="shadow-soft" onClick={() => openInquiry()}>
+          <Button size="lg" variant="outline" className="shadow-soft bg-white text-foreground border-white hover:bg-white/90" onClick={() => openInquiry()}>
             Schedule a Lesson
           </Button>
 
