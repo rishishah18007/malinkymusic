@@ -78,10 +78,10 @@ export function HeroSection() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-tertiary text-tertiary-foreground">
                   <Music2 className="h-6 w-6" />
                 </div>
-                <div>
+                <a href="https://www.playfamily.co/" target="_blank" rel="noopener noreferrer">
                   <p className="text-sm font-semibold text-foreground">Award-Winning</p>
                   <p className="text-xs text-muted-foreground">PLAY Curriculum</p>
-                </div>
+                </a>
               </div>
             </div>
           </div>
