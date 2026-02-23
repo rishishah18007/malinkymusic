@@ -35,7 +35,7 @@ const questions: Question[] = [
     subtitle: "Select your preferred schedule.",
     icon: Calendar,
     options: [
-      { value: "tuesday-morning", label: "Tuesday Mornings", description: "11:00 AM at Mountain Lake Park" },
+      { value: "thursday-morning", label: "Thursday Mornings", description: "11:00 AM at Mountain Lake Park" },
       { value: "tuesday-afternoon", label: "Tuesday Afternoons", description: "3:00 PM at Outer Village" },
       { value: "wednesday", label: "Wednesday Mornings", description: "10:00 AM at Canvas Church" },
       { value: "any", label: "I'm flexible", description: "Any time works" },
@@ -80,7 +80,7 @@ const allClasses: ClassData[] = [
     ageRange: "0-5 years",
     description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
     image: mountainLakeParkImage,
-    schedule: "Tuesdays",
+    schedule: "Thursdays",
     time: "11:00 AM - 11:45 AM",
     location: "Mountain Lake Park, Inner Richmond",
     spotsLeft: 5,
@@ -104,7 +104,7 @@ const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => 
 
   const matchesSchedule = (cls: ClassData) =>
     !schedAnswer || schedAnswer === "any" ||
-    (schedAnswer === "tuesday-morning" && cls.time.includes("11:00 AM")) ||
+    (schedAnswer === "thursday-morning" && cls.time.includes("11:00 AM") && cls.schedule === "Thursdays") ||
     (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
     (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
 
@@ -164,7 +164,7 @@ export default function ClassFinderPage() {
       (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
       (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park"));
     const schedMatch = !schedAnswer || schedAnswer === "any" ||
-      (schedAnswer === "tuesday-morning" && cls.time.includes("11:00 AM")) ||
+      (schedAnswer === "thursday-morning" && cls.time.includes("11:00 AM") && cls.schedule === "Thursdays") ||
       (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
       (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
     return locMatch && schedMatch;
