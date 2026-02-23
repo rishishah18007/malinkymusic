@@ -2,9 +2,9 @@ import { Layout } from "@/components/layout/Layout";
 import emiliaPhoto from "@/assets/emilia-portrait.jpg";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, MapPin, Music, Video, GraduationCap, Star, Quote } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Clock, MapPin, Music, Video, Star, Quote } from "lucide-react";
 import { useState, useEffect } from "react";
+import { LessonInquiryForm } from "@/components/private-lessons/LessonInquiryForm";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -69,6 +69,13 @@ const testimonials = [
 export default function PrivateLessons() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [inquiryOpen, setInquiryOpen] = useState(false);
+  const [preselectedDuration, setPreselectedDuration] = useState("");
+
+  const openInquiry = (duration?: string) => {
+    setPreselectedDuration(duration || "");
+    setInquiryOpen(true);
+  };
 
   useEffect(() => {
     if (!api) return;
@@ -93,11 +100,9 @@ export default function PrivateLessons() {
               Develop your musical talents with one-on-one guidance from an experienced performer and educator.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/auth">
-                <Button size="lg" variant="hero">
-                  Get Started
-                </Button>
-              </Link>
+              <Button size="lg" variant="hero" onClick={() => openInquiry()}>
+                Get Started
+              </Button>
               <a href="#pricing">
                 <Button size="lg" variant="outline">
                   View Pricing
@@ -232,14 +237,13 @@ export default function PrivateLessons() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground text-sm mb-6">{option.description}</p>
-                  <Link to="/auth">
-                    <Button 
-                      variant={option.popular ? "default" : "outline"} 
-                      className="w-full"
-                    >
-                      Sign Up
-                    </Button>
-                  </Link>
+                  <Button 
+                    variant={option.popular ? "default" : "outline"} 
+                    className="w-full"
+                    onClick={() => openInquiry(option.duration)}
+                  >
+                    Sign Up
+                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -340,11 +344,15 @@ export default function PrivateLessons() {
           <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
             Book your first lesson today and discover the joy of learning voice or oboe with personalized instruction.
           </p>
-          <Link to="/auth">
-            <Button size="lg" variant="secondary" className="shadow-soft">
-              Schedule a Lesson
-            </Button>
-          </Link>
+          <Button size="lg" variant="secondary" className="shadow-soft" onClick={() => openInquiry()}>
+            Schedule a Lesson
+          </Button>
+
+          <LessonInquiryForm
+            open={inquiryOpen}
+            onOpenChange={setInquiryOpen}
+            preselectedDuration={preselectedDuration}
+          />
         </div>
       </section>
     </Layout>

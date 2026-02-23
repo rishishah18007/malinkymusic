@@ -198,6 +198,42 @@ export type Database = {
           },
         ]
       }
+      lesson_inquiries: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          lesson_duration: string | null
+          lesson_type: string
+          message: string | null
+          name: string
+          phone: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          lesson_duration?: string | null
+          lesson_type: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          lesson_duration?: string | null
+          lesson_type?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       locations: {
         Row: {
           address: string
