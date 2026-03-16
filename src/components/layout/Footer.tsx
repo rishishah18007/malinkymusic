@@ -11,7 +11,7 @@ const footerLinks = {
     { name: "About Us", href: "/about" },
     { name: "Private Lessons", href: "/private-lessons" },
     { name: "Library Programs", href: "/library-programs" },
-    { name: "Contact", href: "mailto:info@malinkymusic.com" },
+    
   ],
   support: [
     { name: "FAQs", href: "/faqs" },
