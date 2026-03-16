@@ -124,7 +124,7 @@ export default function ClassesPage() {
       classItem.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       classItem.description.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesAge = ageFilter === "all" || classItem.ageRange === ageFilter;
+    const matchesAge = true; // Show all classes regardless of age filter for now
     
     const matchesLocation = locationFilter === "all" || 
       classItem.location.toLowerCase().includes(
