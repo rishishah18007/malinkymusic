@@ -19,6 +19,7 @@ import AdminAttendance from "./pages/admin/AdminAttendance";
 import AdminRevenue from "./pages/admin/AdminRevenue";
 import AdminLocations from "./pages/admin/AdminLocations";
 import NotFound from "./pages/NotFound";
+import { ScrollToTop } from "./components/ScrollToTop";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,6 +29,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/classes" element={<Classes />} />
