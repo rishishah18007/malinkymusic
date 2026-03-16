@@ -1,0 +1,1 @@
+UPDATE locations SET is_active = false WHERE name IN ('Mission District Studio', 'Pacific Heights Center', 'Noe Valley Studio');
