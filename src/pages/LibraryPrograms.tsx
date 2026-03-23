@@ -57,6 +57,13 @@ const LibraryPrograms = () => {
               { library: "Redwood Shores Branch Library", date: "July 5, 2025", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "JUL", day: "5" },
               { library: "Sunnyvale Library", date: "July 21, 2025", time: "11:00 AM – 11:30 AM", description: "Bilingual Spanish-English music and movement class.", month: "JUL", day: "21" },
               { library: "Redwood Shores Branch Library", date: "August 8, 2025", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "AUG", day: "8" },
+              { library: "Montclair Branch Library", date: "April 9, 2026", time: "10:30 AM", description: "Día de Los Niños/Libros Celebration! 1687 Mountain Blvd, Oakland, CA 94611", month: "APR", day: "9" },
+              { library: "Rockridge Branch Library", date: "April 16, 2026", time: "10:30 AM", description: "Día de Los Niños/Libros Celebration! 5366 College Avenue, Oakland, CA", month: "APR", day: "16" },
+              { library: "Little Treasures: A Market for Modern Families", date: "April 19, 2026", time: "10:30 AM – 11:00 AM + another show TBD", description: "Two bilingual shows located in the Ferry Building in San Francisco.", month: "APR", day: "19" },
+              { library: "Elmhurst Branch Library", date: "April 29, 2026", time: "1:00 PM", description: "Día de Los Niños/Libros Celebration! 1427 88th Ave, Oakland, CA 94621", month: "APR", day: "29" },
+              { library: "Dimond Branch Library", date: "April 29, 2026", time: "3:00 PM", description: "Día de Los Niños/Libros Celebration! 3565 Fruitvale Ave, Oakland, CA 94602", month: "APR", day: "29" },
+              { library: "Lakeview Branch Library", date: "April 30, 2026", time: "10:30 AM", description: "Día de Los Niños/Libros Celebration! 550 El Embarcadero, Oakland, CA 94610", month: "APR", day: "30" },
+              { library: "César E. Chávez Branch Library", date: "May 2, 2026", time: "2:00 PM – 3:00 PM", description: "Día de Los Niños/Libros Celebration! 3301 E. 12th St Ste 271, Oakland, CA 94601", month: "MAY", day: "2" },
             ].map((event, index) => (
               <div
                 key={index}
