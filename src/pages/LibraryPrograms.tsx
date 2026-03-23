@@ -48,8 +48,6 @@ const LibraryPrograms = () => {
           </div>
           <div className="grid gap-3 max-w-3xl mx-auto">
             {[
-              { library: "Redwood Shores Branch Library", date: "February 7, 2025", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "FEB", day: "7" },
-              { library: "Redwood Shores Branch Library", date: "March 7, 2025", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "MAR", day: "7" },
               { library: "San Francisco Public Library – Sunset Branch", date: "April 18, 2025", time: "4:30 PM – 5:00 PM", description: "Bilingual music & movement class.", month: "APR", day: "18" },
               { library: "San Francisco Public Library – Mission Branch", date: "April 26, 2025", time: "1:00 PM – 1:45 PM", description: "Día de Los Niños/Libros Celebration!", month: "APR", day: "26" },
               { library: "Redwood Shores Branch Library", date: "May 2, 2025", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "MAY", day: "2" },
