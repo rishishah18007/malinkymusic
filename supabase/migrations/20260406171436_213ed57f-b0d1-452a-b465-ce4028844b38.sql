@@ -1,0 +1,1 @@
+UPDATE classes SET is_active = false WHERE id = '7eedf34c-5c56-45d1-8ec2-c9d0bd746635';
