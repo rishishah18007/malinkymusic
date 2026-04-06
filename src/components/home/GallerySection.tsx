@@ -6,6 +6,7 @@ import gallery3 from "@/assets/gallery/gallery-3.jpg";
 import gallery4 from "@/assets/gallery/gallery-4.jpg";
 import gallery5 from "@/assets/gallery/gallery-5.jpg";
 import gallery6 from "@/assets/gallery/gallery-6.jpg";
+import gallery7 from "@/assets/gallery/gallery-7.jpg";
 
 const images = [
   { src: gallery1, alt: "Parent and child enjoying music class together in the park" },
@@ -14,6 +15,7 @@ const images = [
   { src: gallery4, alt: "Malinky Music teacher singing joyfully outdoors at the Presidio" },
   { src: gallery5, alt: "Mother and baby playing with egg shakers at outdoor music class" },
   { src: gallery6, alt: "Mom holding baby while toddler plays with shakers at the Presidio" },
+  { src: gallery7, alt: "Smiling baby held up by mom at outdoor music class" },
 ];
 
 export function GallerySection() {
