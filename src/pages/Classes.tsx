@@ -90,7 +90,9 @@ export default function ClassesPage() {
     }
 
     if (data) {
-      const formattedClasses: ClassData[] = data.map((cls, index) => ({
+      const dayOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+      const sorted = [...data].sort((a, b) => dayOrder.indexOf(a.day_of_week) - dayOrder.indexOf(b.day_of_week));
+      const formattedClasses: ClassData[] = sorted.map((cls, index) => ({
         id: cls.id,
         title: cls.title,
         ageRange: cls.age_group,
