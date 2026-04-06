@@ -4,12 +4,14 @@ import gallery1 from "@/assets/gallery/gallery-1.jpg";
 import gallery2 from "@/assets/gallery/gallery-2.jpg";
 import gallery3 from "@/assets/gallery/gallery-3.jpg";
 import gallery4 from "@/assets/gallery/gallery-4.jpg";
+import gallery5 from "@/assets/gallery/gallery-5.jpg";
 
 const images = [
   { src: gallery1, alt: "Parent and child enjoying music class together in the park" },
   { src: gallery2, alt: "Malinky Music teacher playing guitar outdoors with a toddler" },
   { src: gallery3, alt: "Children playing under a parachute during outdoor music class" },
   { src: gallery4, alt: "Malinky Music teacher singing joyfully outdoors at the Presidio" },
+  { src: gallery5, alt: "Mother and baby playing with egg shakers at outdoor music class" },
 ];
 
 export function GallerySection() {
