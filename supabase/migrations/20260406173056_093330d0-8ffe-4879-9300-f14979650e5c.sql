@@ -1,0 +1,1 @@
+UPDATE classes SET image_url = '/images/spring-play-wednesday.jpeg' WHERE id = '574f3916-99b2-43e5-b1a8-bc4ae3951b9e';
