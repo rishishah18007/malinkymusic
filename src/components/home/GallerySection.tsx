@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
 import gallery1 from "@/assets/gallery/gallery-1.jpg";
+import gallery2 from "@/assets/gallery/gallery-2.jpg";
 
 const images = [
   { src: gallery1, alt: "Parent and child enjoying music class together in the park" },
+  { src: gallery2, alt: "Malinky Music teacher playing guitar outdoors with a toddler" },
 ];
 
 export function GallerySection() {
