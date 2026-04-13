@@ -51,7 +51,7 @@ const LibraryPrograms = () => {
               { library: "Montclair Branch Library", date: "April 9, 2026", time: "10:30 AM", description: "Día de Los Niños/Libros Celebration! 1687 Mountain Blvd, Oakland, CA 94611", month: "APR", day: "9" },
               { library: "Rockridge Branch Library", date: "April 16, 2026", time: "10:30 AM", description: "Día de Los Niños/Libros Celebration! 5366 College Avenue, Oakland, CA", month: "APR", day: "16" },
               { library: "San Francisco Public Library – Sunset Branch", date: "April 18, 2026", time: "4:30 PM – 5:00 PM", description: "Bilingual music & movement class.", month: "APR", day: "18" },
-              { library: "Little Treasures: A Market for Modern Families", date: "April 19, 2026", time: "10:30 AM – 11:00 AM + another show TBD", description: "Two bilingual shows located in the Ferry Building in San Francisco.", month: "APR", day: "19" },
+              { library: "Little Treasures: A Market for Modern Families", date: "April 19, 2026", time: "11:00 AM & 12:00 PM", description: "Two bilingual shows located in the Ferry Building in San Francisco.", month: "APR", day: "19" },
               { library: "San Francisco Public Library – Mission Branch", date: "April 26, 2026", time: "1:00 PM – 1:45 PM", description: "Día de Los Niños/Libros Celebration!", month: "APR", day: "26" },
               { library: "Elmhurst Branch Library", date: "April 29, 2026", time: "1:00 PM", description: "Día de Los Niños/Libros Celebration! 1427 88th Ave, Oakland, CA 94621", month: "APR", day: "29" },
               { library: "Dimond Branch Library", date: "April 29, 2026", time: "3:00 PM", description: "Día de Los Niños/Libros Celebration! 3565 Fruitvale Ave, Oakland, CA 94602", month: "APR", day: "29" },
