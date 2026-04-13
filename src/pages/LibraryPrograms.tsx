@@ -58,9 +58,18 @@ const LibraryPrograms = () => {
               { library: "Lakeview Branch Library", date: "April 30, 2026", time: "10:30 AM", description: "Día de Los Niños/Libros Celebration! 550 El Embarcadero, Oakland, CA 94610", month: "APR", day: "30" },
               { library: "Redwood Shores Branch Library", date: "May 2, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "MAY", day: "2" },
               { library: "César E. Chávez Branch Library", date: "May 2, 2026", time: "2:00 PM – 3:00 PM", description: "Día de Los Niños/Libros Celebration! 3301 E. 12th St Ste 271, Oakland, CA 94601", month: "MAY", day: "2" },
+              { library: "East Palo Alto Library", date: "June 10, 2026", time: "10:30 AM – 11:15 AM", description: "2415 University Avenue, East Palo Alto, CA 94303", month: "JUN", day: "10" },
               { library: "Redwood Shores Branch Library", date: "June 6, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "JUN", day: "6" },
               { library: "Redwood Shores Branch Library", date: "July 5, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "JUL", day: "5" },
+              { library: "Woodside Library", date: "July 9, 2026", time: "10:30 AM – 11:15 AM", description: "3140 Woodside Road, Woodside, CA 94062", month: "JUL", day: "9" },
+              { library: "Mercy Housing", date: "July 20, 2026", time: "10:30 AM – 11:15 AM", description: "2700 Middlefield Road, Redwood City, CA 94063", month: "JUL", day: "20" },
               { library: "Sunnyvale Library", date: "July 21, 2026", time: "11:00 AM – 11:30 AM", description: "Bilingual Spanish-English music and movement class.", month: "JUL", day: "21" },
+              { library: "Brisbane Library", date: "July 23, 2026", time: "11:30 AM – 12:00 PM", description: "163 Visitacion Avenue, Brisbane, CA 94005", month: "JUL", day: "23" },
+              { library: "Atherton Library", date: "July 25, 2026", time: "10:30 AM – 11:15 AM", description: "2 Dinkelspiel Station Lane, Atherton, CA 94027", month: "JUL", day: "25" },
+              { library: "Millbrae Library", date: "July 26, 2026", time: "10:30 AM – 11:15 AM", description: "1 Library Avenue, Millbrae, CA 94030", month: "JUL", day: "26" },
+              { library: "Portola Valley Library", date: "July 28, 2026", time: "10:30 AM – 11:15 AM", description: "765 Portola Road, Portola Valley, CA 94028", month: "JUL", day: "28" },
+              { library: "Pacifica Sharp Park Library", date: "August 3, 2026", time: "10:15 AM – 11:00 AM", description: "104 Hilton Way, Pacifica, CA 94044", month: "AUG", day: "3" },
+              { library: "Half Moon Bay Library", date: "August 5, 2026", time: "11:00 AM – 11:45 AM", description: "620 Correas Street, Half Moon Bay, CA 94019", month: "AUG", day: "5" },
               { library: "Redwood Shores Branch Library", date: "August 8, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "AUG", day: "8" },
             ].map((event, index) => (
               <div
