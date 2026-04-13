@@ -70,6 +70,7 @@ const LibraryPrograms = () => {
               { library: "Portola Valley Library", date: "July 28, 2026", time: "10:30 AM – 11:15 AM", description: "765 Portola Road, Portola Valley, CA 94028", month: "JUL", day: "28" },
               { library: "Pacifica Sharp Park Library", date: "August 3, 2026", time: "10:15 AM – 11:00 AM", description: "104 Hilton Way, Pacifica, CA 94044", month: "AUG", day: "3" },
               { library: "Half Moon Bay Library", date: "August 5, 2026", time: "11:00 AM – 11:45 AM", description: "620 Correas Street, Half Moon Bay, CA 94019", month: "AUG", day: "5" },
+              { library: "Lafayette Library", date: "August 6, 2026", time: "10:30 AM", description: "Lafayette Library", month: "AUG", day: "6" },
               { library: "Redwood Shores Branch Library", date: "August 8, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "AUG", day: "8" },
             ].map((event, index) => (
               <div
