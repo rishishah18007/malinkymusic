@@ -38,7 +38,7 @@ export function Footer() {
                 Malinky<span className="text-primary">Music</span>
               </span>
             </Link>
-            <p className="text-sm text-background/70 leading-relaxed">
+            <p className="text-sm text-background/90 leading-relaxed">
               Joyful music classes for ages 0 - 5 across San Francisco and the Bay Area.
             </p>
             <div className="flex gap-4">
@@ -71,7 +71,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-sm text-background/70 hover:text-primary transition-colors"
+                    className="text-sm text-background/90 hover:text-primary transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -89,14 +89,14 @@ export function Footer() {
                   {link.href.startsWith("mailto:") ? (
                     <a
                       href={link.href}
-                      className="text-sm text-background/70 hover:text-primary transition-colors"
+                      className="text-sm text-background/90 hover:text-primary transition-colors"
                     >
                       {link.name}
                     </a>
                   ) : (
                     <Link
                       to={link.href}
-                      className="text-sm text-background/70 hover:text-primary transition-colors"
+                      className="text-sm text-background/90 hover:text-primary transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -110,14 +110,14 @@ export function Footer() {
           <div>
             <h3 className="font-display text-lg font-semibold text-background mb-4">Contact Us</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-sm text-background/70">
+              <li className="flex items-center gap-3 text-sm text-background/90">
                 <MapPin className="h-4 w-4 text-primary shrink-0" />
                 <span>San Francisco, CA</span>
               </li>
               <li>
                 <a
                   href="mailto:info@malinkymusic.com"
-                  className="flex items-center gap-3 text-sm text-background/70 hover:text-primary transition-colors"
+                  className="flex items-center gap-3 text-sm text-background/90 hover:text-primary transition-colors"
                 >
                   <Mail className="h-4 w-4 text-primary shrink-0" />
                   <span>info@malinkymusic.com</span>
@@ -131,14 +131,14 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-background/10">
         <div className="container-page py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-background/60">
+          <p className="text-sm text-background/85">
             © {new Date().getFullYear()} Malinky Music. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="text-sm text-background/60 hover:text-primary transition-colors">
+            <Link to="/privacy" className="text-sm text-background/85 hover:text-primary transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-sm text-background/60 hover:text-primary transition-colors">
+            <Link to="/terms" className="text-sm text-background/85 hover:text-primary transition-colors">
               Terms of Service
             </Link>
           </div>

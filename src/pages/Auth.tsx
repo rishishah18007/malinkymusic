@@ -74,7 +74,7 @@ export default function AuthPage() {
     <Layout>
       <Seo
         title="Sign In | Malinky Music"
-        description="Sign in to the Malinky Music admin area."
+        description="Sign in to the Malinky Music admin area to manage classes, bookings, and content."
         path="/auth"
       />
       <section className="min-h-[80vh] flex items-center py-12 lg:py-20">
