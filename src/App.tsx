@@ -10,6 +10,7 @@ import ClassFinder from "./pages/ClassFinder";
 import About from "./pages/About";
 import LibraryPrograms from "./pages/LibraryPrograms";
 import PrivateLessons from "./pages/PrivateLessons";
+import PartiesEvents from "./pages/PartiesEvents";
 import Auth from "./pages/Auth";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/library-programs" element={<LibraryPrograms />} />
             <Route path="/private-lessons" element={<PrivateLessons />} />
+            <Route path="/parties-events" element={<PartiesEvents />} />
             <Route path="/auth" element={<Auth />} />
             
             {/* Admin Routes */}
