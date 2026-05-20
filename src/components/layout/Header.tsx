@@ -131,20 +131,41 @@ export function Header() {
         <div className="lg:hidden border-t border-border animate-fade-in">
           <div className="container-page py-4 space-y-2">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
-                  location.pathname === item.href
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              <div key={item.name}>
+                <Link
+                  to={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={cn(
+                    "block rounded-lg px-4 py-3 text-base font-medium transition-colors",
+                    location.pathname === item.href
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  )}
+                >
+                  {item.name}
+                </Link>
+                {item.children && (
+                  <div className="ml-4 mt-1 space-y-1 border-l border-border pl-3">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.name}
+                        to={child.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={cn(
+                          "block rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                          location.pathname === child.href
+                            ? "bg-primary/10 text-primary"
+                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                        )}
+                      >
+                        {child.name}
+                      </Link>
+                    ))}
+                  </div>
                 )}
-              >
-                {item.name}
-              </Link>
+              </div>
             ))}
+
             <div className="pt-4 border-t border-border">
               <Link to="/classes" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full justify-center">
