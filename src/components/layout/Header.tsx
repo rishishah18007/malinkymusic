@@ -24,6 +24,14 @@ const navigation: NavItem[] = [
   },
   { name: "Private Lessons", href: "/private-lessons" },
   { name: "Library Programs", href: "/library-programs" },
+  {
+    name: "Parties & Events",
+    href: "/parties-events",
+    children: [
+      { name: "Birthday Parties", href: "/parties-events#birthday-parties" },
+      { name: "Private Group Classes", href: "/parties-events#private-group-classes" },
+    ],
+  },
   { name: "About", href: "/about" },
 ];
 
