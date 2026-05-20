@@ -51,11 +51,15 @@ export default function PartiesEvents() {
               Celebrate your little one's special day with a Malinky Music birthday party! Our energetic, interactive sessions are packed with songs, instruments, movement, and play that delight children and their grown-ups alike.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              We bring everything you need for a joyful, music-filled celebration — you provide the cake. Available throughout the Bay Area in your home, backyard, or chosen venue.
+              With packages starting at $290, we bring everything you need for a joyful, music-filled celebration — you provide the cake. Our teachers will bring 45 minutes of music, instruments, props, and a playlist customized with your child's favorite songs.
             </p>
-            <a href="mailto:info@malinkymusic.com?subject=Birthday%20Party%20Inquiry">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdpUpS4xkojYuHpLsc6YArcLobWEO4bnrfWmQkYyRwnisDrCg/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button size="lg" className="gap-2">
-                Inquire About a Party
+                Request a Party Booking
               </Button>
             </a>
           </div>
