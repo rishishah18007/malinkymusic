@@ -82,7 +82,11 @@ export default function PartiesEvents() {
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
               With six, eight, and ten week options, all you need to start is a location in the Bay Area and 4 more friends who want to join in the magic.
             </p>
-            <a href="mailto:info@malinkymusic.com?subject=Private%20Group%20Class%20Inquiry">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSc5WwQvJjJ8r41Zx1uu-jUMumGzxUFZZIDMMQFhgbCaMPoC7A/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button size="lg" className="gap-2">
                 Inquire Now
               </Button>
