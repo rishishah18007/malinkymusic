@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { ClassCard, ClassData } from "@/components/ui/ClassCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
