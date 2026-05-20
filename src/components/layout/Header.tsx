@@ -1,15 +1,27 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useLocation } from "react-router-dom";
 import malinkyLogo from "@/assets/malinky-logo.png";
 
-const navigation = [
+type NavItem = {
+  name: string;
+  href: string;
+  children?: { name: string; href: string }[];
+};
+
+const navigation: NavItem[] = [
   { name: "Home", href: "/" },
-  { name: "Classes", href: "/classes" },
-  { name: "Find a Class", href: "/class-finder" },
+  {
+    name: "Classes",
+    href: "/classes",
+    children: [
+      { name: "All Classes", href: "/classes" },
+      { name: "Find a Class", href: "/class-finder" },
+    ],
+  },
   { name: "Private Lessons", href: "/private-lessons" },
   { name: "Library Programs", href: "/library-programs" },
   { name: "About", href: "/about" },
