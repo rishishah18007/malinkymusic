@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { ClassCard, ClassData } from "@/components/ui/ClassCard";
 import { ArrowLeft, ArrowRight, MapPin, Calendar, Sparkles, CheckCircle } from "lucide-react";
