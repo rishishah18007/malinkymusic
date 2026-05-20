@@ -48,21 +48,63 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:gap-1">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className={cn(
-                "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
-                location.pathname === item.href
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const isActive =
+              location.pathname === item.href ||
+              item.children?.some((c) => c.href === location.pathname);
+            if (item.children) {
+              return (
+                <div key={item.name} className="relative group">
+                  <Link
+                    to={item.href}
+                    className={cn(
+                      "inline-flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors",
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    )}
+                  >
+                    {item.name}
+                    <ChevronDown className="h-3.5 w-3.5" />
+                  </Link>
+                  <div className="absolute left-0 top-full pt-2 hidden group-hover:block">
+                    <div className="min-w-[200px] rounded-lg border border-border bg-popover shadow-md p-1">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.name}
+                          to={child.href}
+                          className={cn(
+                            "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                            location.pathname === child.href
+                              ? "bg-primary/10 text-primary"
+                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                          )}
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={cn(
+                  "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                )}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
+
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:items-center lg:gap-3">
