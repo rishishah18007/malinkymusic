@@ -19,6 +19,11 @@ const spotifyTracks = [
 export default function AboutPage() {
   return (
     <Layout>
+      <Seo
+        title="About Malinky Music | Our Story & Teachers"
+        description="Meet the teachers behind Malinky Music and learn about our joyful, PLAY-based curriculum for ages 0-5."
+        path="/about"
+      />
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 lg:py-28">
         <div className="absolute inset-0">

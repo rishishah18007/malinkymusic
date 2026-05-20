@@ -174,6 +174,11 @@ export default function ClassFinderPage() {
   if (showResults) {
     return (
       <Layout>
+        <Seo
+          title="Class Finder | Malinky Music"
+          description="Find the right Malinky Music class for your child by location, age, and schedule."
+          path="/class-finder"
+        />
         <section className="py-12 lg:py-20">
           <div className="container-page">
             {/* Results Header */}

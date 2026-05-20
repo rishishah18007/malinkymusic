@@ -89,6 +89,11 @@ export default function PrivateLessons() {
 
   return (
     <Layout>
+      <Seo
+        title="Private Music Lessons | Malinky Music"
+        description="One-on-one private music lessons for kids and adults in San Francisco. Book a free trial today."
+        path="/private-lessons"
+      />
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-warm">
         <div className="container-page">
