@@ -67,6 +67,10 @@ export function HeroSection() {
                 src={heroImage}
                 alt="Parents and children enjoying a music class together"
                 className="w-full h-auto object-cover"
+                width={1200}
+                height={900}
+                fetchPriority="high"
+                decoding="async"
               />
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-secondary/10" />
