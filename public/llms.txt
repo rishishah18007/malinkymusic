@@ -1,0 +1,14 @@
+# Malinky Music
+
+> Joyful music classes for babies, toddlers, and preschoolers (ages 0-5) across San Francisco and the Bay Area.
+
+Malinky Music offers parent-and-child group music classes, private music lessons, and free community library programs, all built around the PLAY curriculum.
+
+## Pages
+
+- [Home](/): Overview of Malinky Music classes, vibe, and how to enroll.
+- [About](/about): Meet the teachers (Emilia, Rishi, Ruth) and learn about the PLAY curriculum.
+- [Classes](/classes): Browse current group music classes by age, day, and location.
+- [Class Finder](/class-finder): Guided picker that recommends the right class by location, age, and schedule.
+- [Private Lessons](/private-lessons): One-on-one private music lessons with a free trial.
+- [Library Programs](/library-programs): Free Malinky Music programs at Bay Area libraries with the upcoming schedule.

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { ClassCard, ClassData } from "@/components/ui/ClassCard";
 import { ArrowLeft, ArrowRight, MapPin, Calendar, Sparkles, CheckCircle } from "lucide-react";
@@ -173,6 +174,11 @@ export default function ClassFinderPage() {
   if (showResults) {
     return (
       <Layout>
+        <Seo
+          title="Class Finder | Malinky Music"
+          description="Find the right Malinky Music class for your child by location, age, and schedule."
+          path="/class-finder"
+        />
         <section className="py-12 lg:py-20">
           <div className="container-page">
             {/* Results Header */}
@@ -242,6 +248,11 @@ export default function ClassFinderPage() {
 
   return (
     <Layout>
+      <Seo
+        title="Class Finder | Malinky Music"
+        description="Find the right Malinky Music class for your child by location, age, and schedule."
+        path="/class-finder"
+      />
       <section className="min-h-[80vh] flex items-center py-12 lg:py-20">
         <div className="container-page w-full">
           {/* Progress Bar */}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { ClassCard, ClassData } from "@/components/ui/ClassCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -142,6 +143,11 @@ export default function ClassesPage() {
 
   return (
     <Layout>
+      <Seo
+        title="Classes | Malinky Music"
+        description="Browse Malinky Music classes for babies, toddlers, and preschoolers across San Francisco and the Bay Area."
+        path="/classes"
+      />
       {/* Hero Section */}
       <section className="bg-gradient-hero py-12 lg:py-20">
         <div className="container-page text-center">

@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import emiliaPhoto from "@/assets/emilia-portrait.jpg";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -88,6 +89,11 @@ export default function PrivateLessons() {
 
   return (
     <Layout>
+      <Seo
+        title="Private Music Lessons | Malinky Music"
+        description="One-on-one private music lessons for kids and adults in San Francisco. Book a free trial today."
+        path="/private-lessons"
+      />
       {/* Hero Section */}
       <section className="py-16 lg:py-24 bg-gradient-warm">
         <div className="container-page">

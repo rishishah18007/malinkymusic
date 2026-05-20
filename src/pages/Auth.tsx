@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -71,6 +72,11 @@ export default function AuthPage() {
 
   return (
     <Layout>
+      <Seo
+        title="Sign In | Malinky Music"
+        description="Sign in to the Malinky Music admin area."
+        path="/auth"
+      />
       <section className="min-h-[80vh] flex items-center py-12 lg:py-20">
         <div className="container-page">
           <div className="max-w-md mx-auto">

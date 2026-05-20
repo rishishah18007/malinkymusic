@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Library, Calendar, MapPin, Clock, Music } from "lucide-react";
@@ -7,6 +8,11 @@ import libraryProgramPhoto from "@/assets/library-program.jpg";
 const LibraryPrograms = () => {
   return (
     <Layout>
+      <Seo
+        title="Library Programs | Malinky Music"
+        description="Free Malinky Music programs at Bay Area libraries — see the upcoming schedule and join us."
+        path="/library-programs"
+      />
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/15 via-tertiary/10 to-secondary/10 py-10 lg:py-14">
         <div className="absolute top-10 left-10 text-secondary/20 animate-float-note">
