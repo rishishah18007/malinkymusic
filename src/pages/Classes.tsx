@@ -142,6 +142,11 @@ export default function ClassesPage() {
 
   return (
     <Layout>
+      <Seo
+        title="Classes | Malinky Music"
+        description="Browse Malinky Music classes for babies, toddlers, and preschoolers across San Francisco and the Bay Area."
+        path="/classes"
+      />
       {/* Hero Section */}
       <section className="bg-gradient-hero py-12 lg:py-20">
         <div className="container-page text-center">
