@@ -92,7 +92,10 @@ export default function ClassesPage() {
 
     if (data) {
       const dayOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-      const sorted = [...data].sort((a, b) => dayOrder.indexOf(a.day_of_week) - dayOrder.indexOf(b.day_of_week));
+      const sorted = [...data].sort((a, b) => {
+        if (a.is_featured !== b.is_featured) return a.is_featured ? -1 : 1;
+        return dayOrder.indexOf(a.day_of_week) - dayOrder.indexOf(b.day_of_week);
+      });
       const formattedClasses: ClassData[] = sorted.map((cls, index) => ({
         id: cls.id,
         title: cls.title,
