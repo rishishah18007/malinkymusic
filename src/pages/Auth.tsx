@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,13 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Music, Mail, Lock, User, ArrowRight } from "lucide-react";
 
+/** Only allow same-origin relative paths as post-auth redirect targets. */
+function safeNext(raw: string | null): string {
+  if (!raw) return "/";
+  if (!raw.startsWith("/") || raw.startsWith("//")) return "/";
+  return raw;
+}
+
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,6 +23,8 @@ export default function AuthPage() {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const navigate = useNavigate();
+  const [params] = useSearchParams();
+  const next = safeNext(params.get("next"));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,13 +47,13 @@ export default function AuthPage() {
         }
 
         toast.success("Welcome back!");
-        navigate("/");
+        navigate(next);
       } else {
         const { error } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/`,
+            emailRedirectTo: `${window.location.origin}${next}`,
             data: {
               full_name: fullName,
             },
@@ -61,7 +70,7 @@ export default function AuthPage() {
         }
 
         toast.success("Account created successfully! Welcome to Malinky Music.");
-        navigate("/");
+        navigate(next);
       }
     } catch (error: any) {
       toast.error("Something went wrong. Please try again.");

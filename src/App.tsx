@@ -12,6 +12,7 @@ import LibraryPrograms from "./pages/LibraryPrograms";
 import PrivateLessons from "./pages/PrivateLessons";
 import PartiesEvents from "./pages/PartiesEvents";
 import Auth from "./pages/Auth";
+import OAuthConsent from "./pages/OAuthConsent";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminClasses from "./pages/admin/AdminClasses";
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/private-lessons" element={<PrivateLessons />} />
             <Route path="/parties-events" element={<PartiesEvents />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
             
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminLayout />}>
