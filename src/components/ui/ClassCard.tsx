@@ -13,6 +13,7 @@ export interface ClassData {
   schedule: string;
   time: string;
   location: string;
+  startDate?: string | null;
   spotsLeft: number;
   totalSpots: number;
   price: number;
