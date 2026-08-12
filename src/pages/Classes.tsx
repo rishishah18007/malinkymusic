@@ -126,6 +126,11 @@ export default function ClassesPage() {
     return `${hour12}:${minutes} ${ampm}`;
   };
 
+  const formatDate = (date: string): string => {
+    const d = new Date(date + "T00:00:00");
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  };
+
   // Filter classes
   const filteredClasses = classes.filter((classItem) => {
     const matchesSearch = 
