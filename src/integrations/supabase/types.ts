@@ -146,6 +146,7 @@ export type Database = {
           price: number
           registration_url: string | null
           schedule: string
+          start_date: string | null
           start_time: string
           title: string
           updated_at: string
@@ -165,6 +166,7 @@ export type Database = {
           price: number
           registration_url?: string | null
           schedule: string
+          start_date?: string | null
           start_time: string
           title: string
           updated_at?: string
@@ -184,6 +186,7 @@ export type Database = {
           price?: number
           registration_url?: string | null
           schedule?: string
+          start_date?: string | null
           start_time?: string
           title?: string
           updated_at?: string
