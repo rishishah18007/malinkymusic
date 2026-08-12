@@ -72,6 +72,7 @@ export default function ClassesPage() {
         start_time,
         end_time,
         day_of_week,
+        start_date,
         price,
         capacity,
         is_featured,
@@ -105,6 +106,7 @@ export default function ClassesPage() {
         schedule: cls.schedule,
         time: cls.start_time === "00:00:00" && cls.end_time === "00:00:00" ? "TBD" : `${formatTime(cls.start_time)} - ${formatTime(cls.end_time)}`,
         location: cls.locations?.name || "TBD",
+        startDate: cls.start_date ? formatDate(cls.start_date) : null,
         spotsLeft: Math.floor(Math.random() * cls.capacity), // TODO: Calculate from bookings
         totalSpots: cls.capacity,
         price: Number(cls.price),
@@ -122,6 +124,11 @@ export default function ClassesPage() {
     const ampm = hour >= 12 ? "PM" : "AM";
     const hour12 = hour % 12 || 12;
     return `${hour12}:${minutes} ${ampm}`;
+  };
+
+  const formatDate = (date: string): string => {
+    const d = new Date(date + "T00:00:00");
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
   };
 
   // Filter classes
