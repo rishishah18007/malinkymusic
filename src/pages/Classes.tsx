@@ -106,6 +106,7 @@ export default function ClassesPage() {
         schedule: cls.schedule,
         time: cls.start_time === "00:00:00" && cls.end_time === "00:00:00" ? "TBD" : `${formatTime(cls.start_time)} - ${formatTime(cls.end_time)}`,
         location: cls.locations?.name || "TBD",
+        startDate: cls.start_date ? formatDate(cls.start_date) : null,
         spotsLeft: Math.floor(Math.random() * cls.capacity), // TODO: Calculate from bookings
         totalSpots: cls.capacity,
         price: Number(cls.price),
