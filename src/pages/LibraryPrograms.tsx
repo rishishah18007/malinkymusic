@@ -47,6 +47,21 @@ const libraryEvents: LibraryEvent[] = [
   { library: "Half Moon Bay Library", date: "August 5, 2026", time: "11:00 AM – 11:45 AM", description: "620 Correas Street, Half Moon Bay, CA 94019", month: "AUG", day: "5" },
   { library: "Lafayette Library", date: "August 6, 2026", time: "10:30 AM – 11:15 AM", description: "3491 Mt. Diablo Blvd., Lafayette, CA 94549", month: "AUG", day: "6" },
   { library: "Redwood Shores Branch Library", date: "August 8, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "AUG", day: "8" },
+  { library: "Redwood Shores Branch Library", date: "September 5, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "SEP", day: "5" },
+  { library: "Los Altos Library", date: "September 14, 2026", time: "4:00 PM", description: "Free music and movement class for little ones.", month: "SEP", day: "14" },
+  { library: "Merced Branch Library", date: "September 19, 2026", time: "11:00 AM", description: "Tricycle Music Fest! 155 Winston Dr. San Francisco, CA 94132", month: "SEP", day: "19" },
+  { library: "Marina Branch Library", date: "September 19, 2026", time: "3:00 PM", description: "Tricycle Music Fest! 1890 Chestnut St. San Francisco, CA 94123", month: "SEP", day: "19" },
+  { library: "Redwood Shores Branch Library", date: "October 3, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "OCT", day: "3" },
+  { library: "Redwood Shores Branch Library", date: "November 14, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "NOV", day: "14" },
+  { library: "San Francisco Public Library – Sunset Branch", date: "November 14, 2026", time: "4:30 PM – 5:00 PM", description: "Bilingual music & movement class. 1305 18th Ave, San Francisco, CA", month: "NOV", day: "14" },
+  { library: "Redwood Shores Branch Library", date: "December 5, 2026", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "DEC", day: "5" },
+  { library: "Redwood Shores Branch Library", date: "February 13, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "FEB", day: "13" },
+  { library: "Redwood Shores Branch Library", date: "March 6, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "MAR", day: "6" },
+  { library: "Redwood Shores Branch Library", date: "April 3, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "APR", day: "3" },
+  { library: "Redwood Shores Branch Library", date: "May 1, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "MAY", day: "1" },
+  { library: "Redwood Shores Branch Library", date: "June 5, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "JUN", day: "5" },
+  { library: "Redwood Shores Branch Library", date: "July 3, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "JUL", day: "3" },
+  { library: "Redwood Shores Branch Library", date: "August 7, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "AUG", day: "7" },
 ];
 
 const getEventDate = (event: LibraryEvent): Date => {
