@@ -47,13 +47,13 @@ export default function AuthPage() {
         }
 
         toast.success("Welcome back!");
-        navigate("/");
+        navigate(next);
       } else {
         const { error } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/`,
+            emailRedirectTo: `${window.location.origin}${next}`,
             data: {
               full_name: fullName,
             },
@@ -70,7 +70,7 @@ export default function AuthPage() {
         }
 
         toast.success("Account created successfully! Welcome to Malinky Music.");
-        navigate("/");
+        navigate(next);
       }
     } catch (error: any) {
       toast.error("Something went wrong. Please try again.");
