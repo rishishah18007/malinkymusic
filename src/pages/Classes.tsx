@@ -72,6 +72,7 @@ export default function ClassesPage() {
         start_time,
         end_time,
         day_of_week,
+        start_date,
         price,
         capacity,
         is_featured,
