@@ -79,7 +79,7 @@ export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Calendar className="h-4 w-4 text-primary shrink-0" />
-            <span>{classData.schedule}</span>
+            <span>{classData.schedule}{classData.startDate ? ` • Starts ${classData.startDate}` : ""}</span>
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Clock className="h-4 w-4 text-primary shrink-0" />
