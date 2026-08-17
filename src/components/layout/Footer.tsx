@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Facebook, Instagram } from "lucide-react";
+import { Mail, MapPin, Facebook, Instagram, Sparkles } from "lucide-react";
 import malinkyLogo from "@/assets/malinky-logo.png";
+import { Button } from "@/components/ui/button";
 
 const footerLinks = {
   classes: [
@@ -61,6 +62,21 @@ export function Footer() {
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
+
+            <a
+              href="https://malinkymusic.us12.list-manage.com/subscribe/post?u=10e007957d12bac66b194f1a8&id=6e3d977210&f_id=003066e9f0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              <Button
+                variant="secondary"
+                className="gap-2 bg-background text-foreground hover:bg-background/90"
+              >
+                <Sparkles className="h-4 w-4" />
+                Stay in the Loop
+              </Button>
+            </a>
           </div>
 
           {/* Classes Links */}
