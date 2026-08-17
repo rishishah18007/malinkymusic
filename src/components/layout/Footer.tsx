@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Facebook, Instagram, Sparkles } from "lucide-react";
+import { Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import malinkyLogo from "@/assets/malinky-logo.png";
 import { Button } from "@/components/ui/button";
 
@@ -73,7 +73,7 @@ export function Footer() {
                 variant="secondary"
                 className="gap-2 bg-background text-foreground hover:bg-background/90"
               >
-                <Sparkles className="h-4 w-4" />
+                <span className="text-base">📧</span>
                 Stay in the Loop
               </Button>
             </a>
