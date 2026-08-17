@@ -73,7 +73,7 @@ export function Footer() {
                 variant="secondary"
                 className="gap-2 bg-background text-foreground hover:bg-background/90"
               >
-                <Sparkles className="h-4 w-4" />
+                <span className="text-base">📧</span>
                 Stay in the Loop
               </Button>
             </a>
