@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Facebook, Instagram } from "lucide-react";
+import { Mail, MapPin, Facebook, Instagram, Sparkles } from "lucide-react";
 import malinkyLogo from "@/assets/malinky-logo.png";
+import { Button } from "@/components/ui/button";
 
 const footerLinks = {
   classes: [
