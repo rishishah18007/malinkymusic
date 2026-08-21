@@ -1,0 +1,1 @@
+delete from public.classes where id = '67b93eb4-3c44-4a54-85e9-5d16f6a2eec1';
