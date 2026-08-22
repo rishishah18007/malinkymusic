@@ -30,7 +30,7 @@ const lessonPricing = [
   },
   {
     duration: "60 minutes",
-    price: 100,
+    price: 120,
     description: "Comprehensive lessons for students wanting to dive deep and excel",
   },
 ];
