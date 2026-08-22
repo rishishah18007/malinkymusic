@@ -146,7 +146,7 @@ export function LessonInquiryForm({ open, onOpenChange, preselectedDuration }: L
               <SelectContent>
                 <SelectItem value="30 minutes">30 minutes — $50</SelectItem>
                 <SelectItem value="45 minutes">45 minutes — $75</SelectItem>
-                <SelectItem value="60 minutes">60 minutes — $100</SelectItem>
+                <SelectItem value="60 minutes">60 minutes — $120</SelectItem>
               </SelectContent>
             </Select>
           </div>
