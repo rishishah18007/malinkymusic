@@ -48,7 +48,10 @@ export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
         <img
           src={classData.image}
           alt={classData.title}
-          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+          className={cn(
+            "h-full w-full transition-transform duration-500 group-hover:scale-105",
+            classData.title.includes("Musica") ? "object-contain" : "object-cover"
+          )}
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
