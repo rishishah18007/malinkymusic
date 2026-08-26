@@ -27,9 +27,7 @@ interface ClassCardProps {
 }
 
 export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
-  const spotsPercentage = (classData.spotsLeft / classData.totalSpots) * 100;
-  const isAlmostFull = spotsPercentage <= 25;
-  const isFull = classData.spotsLeft === 0;
+  return (
 
   return (
     <div
