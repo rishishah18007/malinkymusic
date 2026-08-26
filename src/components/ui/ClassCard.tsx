@@ -28,8 +28,6 @@ interface ClassCardProps {
 
 export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
   return (
-
-  return (
     <div
       className={cn(
         "group relative overflow-hidden rounded-2xl bg-card shadow-card transition-all duration-300 hover:shadow-hover hover:-translate-y-1",
