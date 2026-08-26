@@ -27,10 +27,6 @@ interface ClassCardProps {
 }
 
 export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
-  const spotsPercentage = (classData.spotsLeft / classData.totalSpots) * 100;
-  const isAlmostFull = spotsPercentage <= 25;
-  const isFull = classData.spotsLeft === 0;
-
   return (
     <div
       className={cn(
@@ -102,23 +98,11 @@ export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
         {/* CTA */}
         {classData.registrationUrl ? (
           <a href={classData.registrationUrl} target="_blank" rel="noopener noreferrer">
-            <Button 
-              className="w-full mt-2" 
-              disabled={isFull}
-              variant={isFull ? "outline" : "default"}
-            >
-              {isFull ? "Join Waitlist" : "Book This Class"}
-            </Button>
+            <Button className="w-full mt-2">Book This Class</Button>
           </a>
         ) : (
           <Link to={`/classes/${classData.id}`}>
-            <Button 
-              className="w-full mt-2" 
-              disabled={isFull}
-              variant={isFull ? "outline" : "default"}
-            >
-              {isFull ? "Join Waitlist" : "Book This Class"}
-            </Button>
+            <Button className="w-full mt-2">Book This Class</Button>
           </Link>
         )}
       </div>
