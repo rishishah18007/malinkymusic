@@ -69,6 +69,7 @@ const libraryEvents: LibraryEvent[] = [
   { library: "Redwood Shores Branch Library", date: "June 5, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "JUN", day: "5" },
   { library: "Redwood Shores Branch Library", date: "July 3, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "JUL", day: "3" },
   { library: "Redwood Shores Branch Library", date: "August 7, 2027", time: "11:00 AM – 11:30 AM", description: "Monthly PLAY music and movement class! The first Saturday of every month.", month: "AUG", day: "7" },
+];
 
 const getEventDate = (event: LibraryEvent): Date => {
   const date = new Date(event.date);
