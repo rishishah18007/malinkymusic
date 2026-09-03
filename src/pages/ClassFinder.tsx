@@ -137,12 +137,11 @@ const useClasses = () => {
 };
 
 const matchesLocationFor = (locAnswer: string | undefined, cls: ClassData) =>
-
   !locAnswer || locAnswer === "any" ||
   (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
-  (locAnswer === "presidio" && cls.location.includes("Presidio")) ||
+  (locAnswer === "presidio" && (cls.location.includes("Presidio") || cls.location.includes("Canvas Church") || cls.location.includes("Main Parade Lawn"))) ||
   (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
-  (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
+  (locAnswer === "sausalito" && (cls.location.includes("Sausalito") || cls.location.includes("Mini Anna") || cls.title.includes("Sausalito")));
 
 const matchesScheduleFor = (schedAnswer: string | undefined, cls: ClassData) =>
   !schedAnswer || schedAnswer === "any" ||
@@ -152,7 +151,7 @@ const matchesScheduleFor = (schedAnswer: string | undefined, cls: ClassData) =>
   (schedAnswer === "thursday-morning" && cls.schedule.includes("Thursday"));
 
 // Filter classes based on answers
-const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => {
+const getRecommendedClasses = (answers: Record<string, string>, allClasses: ClassData[]): ClassData[] => {
   const locAnswer = answers.location;
   const schedAnswer = answers.schedule;
 
@@ -165,9 +164,9 @@ const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => 
   // If exact matches exist, return them; otherwise return classes matching either preference
   if (exactMatches.length > 0) return exactMatches;
 
-  const broadMatches = allClasses.filter(cls => matchesLocation(cls) || matchesSchedule(cls));
-  return broadMatches;
+  return allClasses.filter(cls => matchesLocation(cls) || matchesSchedule(cls));
 };
+
 
 
 export default function ClassFinderPage() {
