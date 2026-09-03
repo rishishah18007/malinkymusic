@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { ClassCard, ClassData } from "@/components/ui/ClassCard";
-import { ArrowLeft, ArrowRight, MapPin, Calendar, Sparkles, CheckCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Calendar, Sparkles, CheckCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 import babyClassImage from "@/assets/baby-class.jpg";
-import mountainLakeParkImage from "/images/mountain-lake-park-class.jpg";
+import toddlerClassImage from "@/assets/toddler-class.jpg";
+import preschoolClassImage from "@/assets/preschool-class.jpg";
+
 
 interface Question {
   id: string;
