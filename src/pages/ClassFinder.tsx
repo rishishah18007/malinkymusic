@@ -27,6 +27,7 @@ const questions: Question[] = [
       { value: "inner-sunset", label: "Inner Sunset", description: "Near Outer Village" },
       { value: "presidio", label: "Presidio", description: "Near Canvas Church" },
       { value: "inner-richmond", label: "Inner Richmond", description: "Near Mountain Lake Park" },
+      { value: "sausalito", label: "Sausalito", description: "Mini Anna Photo Studio" },
       { value: "any", label: "I'm flexible", description: "Show all locations" },
     ],
   },
