@@ -94,7 +94,11 @@ export function ClassCard({ classData, variant = "default" }: ClassCardProps) {
         {/* Price */}
         <div className="flex items-center justify-end pt-2 border-t border-border">
           <span className="text-lg font-bold text-foreground">
-            ${classData.price}<span className="text-sm font-normal text-muted-foreground">/class</span>
+            {classData.price === 0 ? (
+              "Free"
+            ) : (
+              <>${classData.price}<span className="text-sm font-normal text-muted-foreground">/class</span></>
+            )}
           </span>
         </div>
 
