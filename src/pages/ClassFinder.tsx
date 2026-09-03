@@ -173,6 +173,7 @@ export default function ClassFinderPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
+  const { classes: allClasses, isLoading } = useClasses();
 
   const currentQuestion = questions[currentStep];
   const progress = ((currentStep + 1) / questions.length) * 100;
@@ -203,7 +204,7 @@ export default function ClassFinderPage() {
     setShowResults(false);
   };
 
-  const recommendedClasses = getRecommendedClasses(answers);
+  const recommendedClasses = getRecommendedClasses(answers, allClasses);
 
   // Determine if we're showing exact or broad matches for messaging
   const locAnswer = answers.location;
