@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Seo } from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { ClassCard, ClassData } from "@/components/ui/ClassCard";
-import { ArrowLeft, ArrowRight, MapPin, Calendar, Sparkles, CheckCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Calendar, Sparkles, CheckCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 import babyClassImage from "@/assets/baby-class.jpg";
-import mountainLakeParkImage from "/images/mountain-lake-park-class.jpg";
+import toddlerClassImage from "@/assets/toddler-class.jpg";
+import preschoolClassImage from "@/assets/preschool-class.jpg";
+
 
 interface Question {
   id: string;
@@ -46,105 +49,99 @@ const questions: Question[] = [
   },
 ];
 
-const allClasses: ClassData[] = [
-  {
-    id: "play-shorts-canvas",
-    title: "Fall PLAY Shorts",
-    ageRange: "0-5 years",
-    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
-    image: babyClassImage,
-    schedule: "Mondays",
-    time: "10:00 AM - 10:45 AM",
-    location: "Canvas Church, Presidio",
-    spotsLeft: 5,
-    totalSpots: 12,
-    price: 35,
-    featured: true,
-    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1055526",
-  },
-  {
-    id: "play-main-parade-lawn",
-    title: "Fall PLAY Music",
-    ageRange: "0-5 years",
-    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
-    image: babyClassImage,
-    schedule: "Mondays",
-    time: "10:00 AM - 10:45 AM",
-    location: "Main Parade Lawn, Presidio",
-    spotsLeft: 5,
-    totalSpots: 12,
-    price: 35,
-    featured: false,
-    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1055527",
-  },
-  {
-    id: "play-outer-village",
-    title: "Fall PLAY Music",
-    ageRange: "0-5 years",
-    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
-    image: babyClassImage,
-    schedule: "Tuesdays",
-    time: "10:15 AM - 11:00 AM",
-    location: "Outer Village, Inner Sunset",
-    spotsLeft: 5,
-    totalSpots: 12,
-    price: 35,
-    featured: true,
-    registrationUrl: "https://www.hisawyer.com/outer-village/schedules/activity-set/1734026?day=2026-02-24&view=cal&source=all-activities",
-  },
-  {
-    id: "play-mountain-lake-park",
-    title: "Fall PLAY Shorts",
-    ageRange: "0-5 years",
-    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
-    image: mountainLakeParkImage,
-    schedule: "Thursdays",
-    time: "10:00 AM - 10:45 AM",
-    location: "Mountain Lake Park, Inner Richmond",
-    spotsLeft: 5,
-    totalSpots: 12,
-    price: 35,
-    featured: false,
-    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1055650",
-  },
-  {
-    id: "play-shorts-sausalito",
-    title: "Fall PLAY Shorts - Sausalito",
-    ageRange: "0-5 years",
-    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
-    image: babyClassImage,
-    schedule: "Wednesdays",
-    time: "10:00 AM - 10:45 AM",
-    location: "Mini Anna Photo Studio, Sausalito",
-    spotsLeft: 5,
-    totalSpots: 12,
-    price: 35,
-    featured: false,
-    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1056332",
-  },
-  {
-    id: "intro-class-sausalito",
-    title: "Intro Class - Sausalito",
-    ageRange: "0-5 years",
-    description: "Try a free intro PLAY music class for children ages 0-5 and their caregivers.",
-    image: babyClassImage,
-    schedule: "Wednesday, September 9th",
-    time: "10:00 AM - 10:45 AM",
-    location: "Mini Anna Photo Studio, Sausalito",
-    spotsLeft: 5,
-    totalSpots: 12,
-    price: 0,
-    featured: false,
-    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1056333",
-  },
-];
+// Same fallback images / ordering as the All Classes page so images match
+const classImages = [toddlerClassImage, preschoolClassImage, babyClassImage];
+const getImageForIndex = (index: number): string => classImages[index % classImages.length];
+
+const formatTime = (time: string): string => {
+  const [hours, minutes] = time.split(":");
+  const hour = parseInt(hours);
+  const ampm = hour >= 12 ? "PM" : "AM";
+  const hour12 = hour % 12 || 12;
+  return `${hour12}:${minutes} ${ampm}`;
+};
+
+const formatDate = (date: string): string => {
+  const d = new Date(date + "T00:00:00");
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+};
+
+const useClasses = () => {
+  const [classes, setClasses] = useState<ClassData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchClasses = async () => {
+      const { data, error } = await supabase
+        .from("classes")
+        .select(`
+          id,
+          title,
+          description,
+          age_group,
+          schedule,
+          start_time,
+          end_time,
+          day_of_week,
+          start_date,
+          price,
+          capacity,
+          is_featured,
+          image_url,
+          registration_url,
+          locations ( id, name )
+        `)
+        .eq("is_active", true);
+
+      if (error) {
+        console.error("Error fetching classes:", error);
+        setIsLoading(false);
+        return;
+      }
+
+      if (data) {
+        const dayOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+        const sorted = [...data].sort((a, b) => {
+          if (a.is_featured !== b.is_featured) return a.is_featured ? -1 : 1;
+          return dayOrder.indexOf(a.day_of_week) - dayOrder.indexOf(b.day_of_week);
+        });
+        setClasses(
+          sorted.map((cls, index) => ({
+            id: cls.id,
+            title: cls.title,
+            ageRange: cls.age_group,
+            description: cls.description || "",
+            image: cls.image_url || getImageForIndex(index),
+            schedule: cls.schedule,
+            time:
+              cls.start_time === "00:00:00" && cls.end_time === "00:00:00"
+                ? "TBD"
+                : `${formatTime(cls.start_time)} - ${formatTime(cls.end_time)}`,
+            location: cls.locations?.name || "TBD",
+            startDate: cls.start_date ? formatDate(cls.start_date) : null,
+            spotsLeft: Math.floor(Math.random() * cls.capacity),
+            totalSpots: cls.capacity,
+            price: Number(cls.price),
+            featured: cls.is_featured,
+            registrationUrl: (cls as any).registration_url,
+          }))
+        );
+      }
+      setIsLoading(false);
+    };
+
+    fetchClasses();
+  }, []);
+
+  return { classes, isLoading };
+};
 
 const matchesLocationFor = (locAnswer: string | undefined, cls: ClassData) =>
   !locAnswer || locAnswer === "any" ||
   (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
-  (locAnswer === "presidio" && cls.location.includes("Presidio")) ||
+  (locAnswer === "presidio" && (cls.location.includes("Presidio") || cls.location.includes("Canvas Church") || cls.location.includes("Main Parade Lawn"))) ||
   (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
-  (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
+  (locAnswer === "sausalito" && (cls.location.includes("Sausalito") || cls.location.includes("Mini Anna") || cls.title.includes("Sausalito")));
 
 const matchesScheduleFor = (schedAnswer: string | undefined, cls: ClassData) =>
   !schedAnswer || schedAnswer === "any" ||
@@ -154,7 +151,7 @@ const matchesScheduleFor = (schedAnswer: string | undefined, cls: ClassData) =>
   (schedAnswer === "thursday-morning" && cls.schedule.includes("Thursday"));
 
 // Filter classes based on answers
-const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => {
+const getRecommendedClasses = (answers: Record<string, string>, allClasses: ClassData[]): ClassData[] => {
   const locAnswer = answers.location;
   const schedAnswer = answers.schedule;
 
@@ -167,15 +164,16 @@ const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => 
   // If exact matches exist, return them; otherwise return classes matching either preference
   if (exactMatches.length > 0) return exactMatches;
 
-  const broadMatches = allClasses.filter(cls => matchesLocation(cls) || matchesSchedule(cls));
-  return broadMatches;
+  return allClasses.filter(cls => matchesLocation(cls) || matchesSchedule(cls));
 };
+
 
 
 export default function ClassFinderPage() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResults, setShowResults] = useState(false);
+  const { classes: allClasses, isLoading } = useClasses();
 
   const currentQuestion = questions[currentStep];
   const progress = ((currentStep + 1) / questions.length) * 100;
@@ -206,7 +204,7 @@ export default function ClassFinderPage() {
     setShowResults(false);
   };
 
-  const recommendedClasses = getRecommendedClasses(answers);
+  const recommendedClasses = getRecommendedClasses(answers, allClasses);
 
   // Determine if we're showing exact or broad matches for messaging
   const locAnswer = answers.location;
@@ -259,17 +257,24 @@ export default function ClassFinderPage() {
             </div>
 
             {/* Recommended Classes */}
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
-              {recommendedClasses.map((classItem, index) => (
-                <div
-                  key={classItem.id}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <ClassCard classData={classItem} />
-                </div>
-              ))}
-            </div>
+            {isLoading ? (
+              <div className="flex justify-center py-16">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+              </div>
+            ) : (
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+                {recommendedClasses.map((classItem, index) => (
+                  <div
+                    key={classItem.id}
+                    className="animate-fade-in-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <ClassCard classData={classItem} />
+                  </div>
+                ))}
+              </div>
+            )}
+
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
