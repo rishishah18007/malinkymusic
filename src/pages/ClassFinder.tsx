@@ -37,9 +37,10 @@ const questions: Question[] = [
     subtitle: "Select your preferred schedule.",
     icon: Calendar,
     options: [
-      { value: "thursday-morning", label: "Thursday Mornings", description: "11:00 AM at Mountain Lake Park" },
-      { value: "tuesday-afternoon", label: "Tuesday Afternoons", description: "3:00 PM at Outer Village" },
-      { value: "wednesday", label: "Wednesday Mornings", description: "10:00 AM at Canvas Church" },
+      { value: "monday-morning", label: "Monday Mornings", description: "10:00 AM at the Presidio" },
+      { value: "tuesday-morning", label: "Tuesday Mornings", description: "10:15 AM at Outer Village" },
+      { value: "wednesday-morning", label: "Wednesday Mornings", description: "10:00 AM in Sausalito" },
+      { value: "thursday-morning", label: "Thursday Mornings", description: "10:00 AM at Mountain Lake Park" },
       { value: "any", label: "I'm flexible", description: "Any time works" },
     ],
   },
@@ -47,28 +48,43 @@ const questions: Question[] = [
 
 const allClasses: ClassData[] = [
   {
-    id: "play-canvas",
-    title: "PLAY Music",
+    id: "play-shorts-canvas",
+    title: "Fall PLAY Shorts",
     ageRange: "0-5 years",
     description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
     image: babyClassImage,
-    schedule: "Wednesdays",
+    schedule: "Mondays",
     time: "10:00 AM - 10:45 AM",
     location: "Canvas Church, Presidio",
     spotsLeft: 5,
     totalSpots: 12,
     price: 35,
     featured: true,
-    registrationUrl: "https://app.mainstreetsites.com/classes.aspx?dmn=5096&sem=52047#tabs",
+    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1055526",
+  },
+  {
+    id: "play-main-parade-lawn",
+    title: "Fall PLAY Music",
+    ageRange: "0-5 years",
+    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
+    image: babyClassImage,
+    schedule: "Mondays",
+    time: "10:00 AM - 10:45 AM",
+    location: "Main Parade Lawn, Presidio",
+    spotsLeft: 5,
+    totalSpots: 12,
+    price: 35,
+    featured: false,
+    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1055527",
   },
   {
     id: "play-outer-village",
-    title: "PLAY Music",
+    title: "Fall PLAY Music",
     ageRange: "0-5 years",
     description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
     image: babyClassImage,
     schedule: "Tuesdays",
-    time: "3:00 PM - 3:45 PM",
+    time: "10:15 AM - 11:00 AM",
     location: "Outer Village, Inner Sunset",
     spotsLeft: 5,
     totalSpots: 12,
@@ -78,18 +94,18 @@ const allClasses: ClassData[] = [
   },
   {
     id: "play-mountain-lake-park",
-    title: "Spring PLAY Music",
+    title: "Fall PLAY Shorts",
     ageRange: "0-5 years",
     description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
     image: mountainLakeParkImage,
     schedule: "Thursdays",
-    time: "11:00 AM - 11:45 AM",
+    time: "10:00 AM - 10:45 AM",
     location: "Mountain Lake Park, Inner Richmond",
     spotsLeft: 5,
     totalSpots: 12,
     price: 35,
     featured: false,
-    registrationUrl: "https://app.mainstreetsites.com/classes.aspx?dmn=5096&sem=52047#tabs",
+    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1055650",
   },
   {
     id: "play-shorts-sausalito",
@@ -123,23 +139,27 @@ const allClasses: ClassData[] = [
   },
 ];
 
+const matchesLocationFor = (locAnswer: string | undefined, cls: ClassData) =>
+  !locAnswer || locAnswer === "any" ||
+  (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
+  (locAnswer === "presidio" && cls.location.includes("Presidio")) ||
+  (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
+  (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
+
+const matchesScheduleFor = (schedAnswer: string | undefined, cls: ClassData) =>
+  !schedAnswer || schedAnswer === "any" ||
+  (schedAnswer === "monday-morning" && cls.schedule.includes("Monday")) ||
+  (schedAnswer === "tuesday-morning" && cls.schedule.includes("Tuesday")) ||
+  (schedAnswer === "wednesday-morning" && cls.schedule.includes("Wednesday")) ||
+  (schedAnswer === "thursday-morning" && cls.schedule.includes("Thursday"));
+
 // Filter classes based on answers
 const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => {
   const locAnswer = answers.location;
   const schedAnswer = answers.schedule;
 
-  const matchesLocation = (cls: ClassData) =>
-    !locAnswer || locAnswer === "any" ||
-    (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
-    (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
-    (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
-    (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
-
-  const matchesSchedule = (cls: ClassData) =>
-    !schedAnswer || schedAnswer === "any" ||
-    (schedAnswer === "thursday-morning" && cls.time.includes("11:00 AM") && cls.schedule === "Thursdays") ||
-    (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
-    (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
+  const matchesLocation = (cls: ClassData) => matchesLocationFor(locAnswer, cls);
+  const matchesSchedule = (cls: ClassData) => matchesScheduleFor(schedAnswer, cls);
 
   // First try exact matches (both location and schedule)
   const exactMatches = allClasses.filter(cls => matchesLocation(cls) && matchesSchedule(cls));
@@ -191,18 +211,9 @@ export default function ClassFinderPage() {
   // Determine if we're showing exact or broad matches for messaging
   const locAnswer = answers.location;
   const schedAnswer = answers.schedule;
-  const hasExactMatch = recommendedClasses.some(cls => {
-    const locMatch = !locAnswer || locAnswer === "any" ||
-      (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
-      (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
-      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
-      (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
-    const schedMatch = !schedAnswer || schedAnswer === "any" ||
-      (schedAnswer === "thursday-morning" && cls.time.includes("11:00 AM") && cls.schedule === "Thursdays") ||
-      (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
-      (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
-    return locMatch && schedMatch;
-  });
+  const hasExactMatch = recommendedClasses.some(
+    (cls) => matchesLocationFor(locAnswer, cls) && matchesScheduleFor(schedAnswer, cls)
+  );
 
   if (showResults) {
     return (
