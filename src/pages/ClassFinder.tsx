@@ -27,6 +27,7 @@ const questions: Question[] = [
       { value: "inner-sunset", label: "Inner Sunset", description: "Near Outer Village" },
       { value: "presidio", label: "Presidio", description: "Near Canvas Church" },
       { value: "inner-richmond", label: "Inner Richmond", description: "Near Mountain Lake Park" },
+      { value: "sausalito", label: "Sausalito", description: "Mini Anna Photo Studio" },
       { value: "any", label: "I'm flexible", description: "Show all locations" },
     ],
   },
@@ -90,6 +91,36 @@ const allClasses: ClassData[] = [
     featured: false,
     registrationUrl: "https://app.mainstreetsites.com/classes.aspx?dmn=5096&sem=52047#tabs",
   },
+  {
+    id: "play-shorts-sausalito",
+    title: "Fall PLAY Shorts - Sausalito",
+    ageRange: "0-5 years",
+    description: "A joyful, interactive music class for children ages 0-5 and their caregivers. Sing, dance, and explore instruments together!",
+    image: babyClassImage,
+    schedule: "Wednesdays",
+    time: "10:00 AM - 10:45 AM",
+    location: "Mini Anna Photo Studio, Sausalito",
+    spotsLeft: 5,
+    totalSpots: 12,
+    price: 35,
+    featured: false,
+    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1056332",
+  },
+  {
+    id: "intro-class-sausalito",
+    title: "Intro Class - Sausalito",
+    ageRange: "0-5 years",
+    description: "Try a free intro PLAY music class for children ages 0-5 and their caregivers.",
+    image: babyClassImage,
+    schedule: "Wednesday, September 9th",
+    time: "10:00 AM - 10:45 AM",
+    location: "Mini Anna Photo Studio, Sausalito",
+    spotsLeft: 5,
+    totalSpots: 12,
+    price: 0,
+    featured: false,
+    registrationUrl: "https://app.mainstreetsites.com/dmn5096/class.aspx?cls=1056333",
+  },
 ];
 
 // Filter classes based on answers
@@ -101,7 +132,8 @@ const getRecommendedClasses = (answers: Record<string, string>): ClassData[] => 
     !locAnswer || locAnswer === "any" ||
     (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
     (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
-    (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park"));
+    (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
+    (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
 
   const matchesSchedule = (cls: ClassData) =>
     !schedAnswer || schedAnswer === "any" ||
@@ -163,7 +195,8 @@ export default function ClassFinderPage() {
     const locMatch = !locAnswer || locAnswer === "any" ||
       (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
       (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
-      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park"));
+      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
+      (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
     const schedMatch = !schedAnswer || schedAnswer === "any" ||
       (schedAnswer === "thursday-morning" && cls.time.includes("11:00 AM") && cls.schedule === "Thursdays") ||
       (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
