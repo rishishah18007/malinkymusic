@@ -257,17 +257,24 @@ export default function ClassFinderPage() {
             </div>
 
             {/* Recommended Classes */}
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
-              {recommendedClasses.map((classItem, index) => (
-                <div
-                  key={classItem.id}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <ClassCard classData={classItem} />
-                </div>
-              ))}
-            </div>
+            {isLoading ? (
+              <div className="flex justify-center py-16">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+              </div>
+            ) : (
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+                {recommendedClasses.map((classItem, index) => (
+                  <div
+                    key={classItem.id}
+                    className="animate-fade-in-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <ClassCard classData={classItem} />
+                  </div>
+                ))}
+              </div>
+            )}
+
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
