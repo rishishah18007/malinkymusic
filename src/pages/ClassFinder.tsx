@@ -211,18 +211,9 @@ export default function ClassFinderPage() {
   // Determine if we're showing exact or broad matches for messaging
   const locAnswer = answers.location;
   const schedAnswer = answers.schedule;
-  const hasExactMatch = recommendedClasses.some(cls => {
-    const locMatch = !locAnswer || locAnswer === "any" ||
-      (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
-      (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
-      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
-      (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
-    const schedMatch = !schedAnswer || schedAnswer === "any" ||
-      (schedAnswer === "thursday-morning" && cls.time.includes("11:00 AM") && cls.schedule === "Thursdays") ||
-      (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
-      (schedAnswer === "wednesday" && cls.schedule === "Wednesdays");
-    return locMatch && schedMatch;
-  });
+  const hasExactMatch = recommendedClasses.some(
+    (cls) => matchesLocationFor(locAnswer, cls) && matchesScheduleFor(schedAnswer, cls)
+  );
 
   if (showResults) {
     return (
