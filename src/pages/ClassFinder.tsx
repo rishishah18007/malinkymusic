@@ -195,7 +195,8 @@ export default function ClassFinderPage() {
     const locMatch = !locAnswer || locAnswer === "any" ||
       (locAnswer === "inner-sunset" && cls.location.includes("Outer Village")) ||
       (locAnswer === "presidio" && cls.location.includes("Canvas Church")) ||
-      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park"));
+      (locAnswer === "inner-richmond" && cls.location.includes("Mountain Lake Park")) ||
+      (locAnswer === "sausalito" && cls.location.includes("Sausalito"));
     const schedMatch = !schedAnswer || schedAnswer === "any" ||
       (schedAnswer === "thursday-morning" && cls.time.includes("11:00 AM") && cls.schedule === "Thursdays") ||
       (schedAnswer === "tuesday-afternoon" && cls.time.includes("3:00 PM")) ||
