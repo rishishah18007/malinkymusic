@@ -76,6 +76,7 @@ export default function ClassesPage() {
         price,
         capacity,
         is_featured,
+        is_one_time,
         image_url,
         registration_url,
         locations (
@@ -93,7 +94,7 @@ export default function ClassesPage() {
 
     if (data) {
       const dayOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-      const sorted = [...data].sort((a, b) => {
+      const sorted = data.filter((cls) => !isExpiredOneTimeClass(cls)).sort((a, b) => {
         if (a.is_featured !== b.is_featured) return a.is_featured ? -1 : 1;
         return dayOrder.indexOf(a.day_of_week) - dayOrder.indexOf(b.day_of_week);
       });
