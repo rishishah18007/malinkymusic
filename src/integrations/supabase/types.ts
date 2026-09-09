@@ -142,6 +142,7 @@ export type Database = {
           image_url: string | null
           is_active: boolean
           is_featured: boolean
+          is_one_time: boolean
           location_id: string | null
           price: number
           registration_url: string | null
@@ -162,6 +163,7 @@ export type Database = {
           image_url?: string | null
           is_active?: boolean
           is_featured?: boolean
+          is_one_time?: boolean
           location_id?: string | null
           price: number
           registration_url?: string | null
@@ -182,6 +184,7 @@ export type Database = {
           image_url?: string | null
           is_active?: boolean
           is_featured?: boolean
+          is_one_time?: boolean
           location_id?: string | null
           price?: number
           registration_url?: string | null
