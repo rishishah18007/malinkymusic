@@ -7,6 +7,7 @@ import { ClassCard, ClassData } from "@/components/ui/ClassCard";
 import { ArrowLeft, ArrowRight, MapPin, Calendar, Sparkles, CheckCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
+import { isExpiredOneTimeClass } from "@/lib/classFilters";
 import babyClassImage from "@/assets/baby-class.jpg";
 import toddlerClassImage from "@/assets/toddler-class.jpg";
 import preschoolClassImage from "@/assets/preschool-class.jpg";

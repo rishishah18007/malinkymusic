@@ -9,6 +9,7 @@ import { Search, Filter, MapPin, Calendar, Baby, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
+import { isExpiredOneTimeClass } from "@/lib/classFilters";
 import babyClassImage from "@/assets/baby-class.jpg";
 import toddlerClassImage from "@/assets/toddler-class.jpg";
 import preschoolClassImage from "@/assets/preschool-class.jpg";
