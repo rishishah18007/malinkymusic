@@ -1,0 +1,1 @@
+ALTER TABLE public.classes ADD COLUMN IF NOT EXISTS is_one_time boolean NOT NULL DEFAULT false;
